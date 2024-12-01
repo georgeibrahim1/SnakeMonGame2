@@ -25,10 +25,18 @@ enum DESIGN_MODE_ITEMS // The items of the Design Mode (you should add more item
 	ITM_ADD_LADDER,
 	ITM_ADD_SNAKE,
 	ITM_ADD_CARD,
-	ITM_EXIT,
+	ITM_COPY_CARD,
+	ITM_PASTE_CARD,
+	ITM_CUT_CARD,
+	ITM_EDIT_CARD,
+	ITM_DELETE_OBJECT,
+	ITM_SAVE_GRID,
+	ITM_LOAD_GRID,
+	ITM_EXIT_DM, // Exiting from design mode
 	ITM_SWITCH_TO_PLAY_MODE,
-	
-	///TODO: Add more items names here
+
+
+	///DONE: Add more items names here
 
 	DESIGN_ITM_COUNT	// no. of items ==> This should be the last line in this enum
 };
@@ -39,9 +47,13 @@ enum PLAY_MODE_ITEMS // The items of the Play Mode (you should add more items)
 	// If you want to change the menu items order, change the order here
 
 	ITM_ROLL_DICE,
+	ITM_INPUT_DICE_VALUE,
+	ITM_NEW_GAME,
+	ITM_EXIT_PM,  // Exiting from play mode
 	ITM_SWITCH_TO_DESIGN_MODE,
 
-	///TODO: Add more items names here
+
+	///DONE: Add more items names here
 
 	PLAY_ITM_COUNT		// no. of items ==> This should be the last line in this enum
 };
@@ -54,14 +66,14 @@ struct UI_Info	// User Interface Info.
 	GUI_MODE InterfaceMode;
 
 	int	width, height,			// Window width and height
-		wx , wy,				// Window starting coordinates
+		wx, wy,				// Window starting coordinates
 		StatusBarHeight,		// Status Bar Height
 		ToolBarHeight,			// Tool Bar Height (distance from top of window to bottom line of toolbar)
 		MenuItemWidth;			// Width of each item in toolbar menu
-	
+
 	int CellHeight;				// Height of 1 CELL
 	int CellWidth;				// Width of 1 CELL
-	
+
 	color MsgColor;				// Messages color (usually used in statusbar)
 	color PlayerInfoColor;		// Players' Info color (used in the toolbar - right-indented)
 
@@ -90,6 +102,6 @@ struct UI_Info	// User Interface Info.
 
 	///TODO: Add more members if needed
 
-} UI ;	// create a global object UI
+} UI;	// create a global object UI
 
 #endif
