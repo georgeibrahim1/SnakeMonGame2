@@ -16,8 +16,16 @@ AddCardAction::~AddCardAction()
 void AddCardAction::ReadActionParameters() 
 {	
 
-	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
-
+	///Done: Implement this function as mentioned in the guideline steps (numbered below) below
+	int Flag = 0;
+	Grid* pGrid = pManager->GetGrid();
+	Output* pOut = pGrid->GetOutput();
+	Input* pIn = pGrid->GetInput();
+	pOut->PrintMessage("New Card: Type in card number ...");
+	cardNumber = pIn->GetInteger(pOut,Flag);
+	pOut->PrintMessage("New Card: Click on its Cell ...");
+	cardPosition = pIn->GetCellClicked();
+	pOut->ClearStatusBar();
 
 	// == Here are some guideline steps (numbered below) to implement this function ==
 
@@ -44,6 +52,9 @@ void AddCardAction::Execute()
 	// 1- The first line of any Action Execution is to read its parameter first
 	
 	// 2- Switch case on cardNumber data member and create the appropriate card object type
+
+	AddCardAction :: ReadActionParameters();
+
 	Card * pCard = NULL; // will point to the card object type
 	switch (cardNumber)
 	{
@@ -65,7 +76,14 @@ void AddCardAction::Execute()
 		// C- Add the card object to the GameObject of its Cell:
 
 		// D- if the GameObject cannot be added in the Cell, Print the appropriate error message on statusbar
-		
+		Grid* pGrid = pManager->GetGrid();
+		pCard->ReadCardParameters(pGrid);
+		bool added = pGrid->AddObjectToCell(pCard);
+		if (!added)
+		{
+			pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
+		}
+
 	}
 
 	// Here, the card is created and added to the GameObject of its Cell, so we finished executing the AddCardAction
