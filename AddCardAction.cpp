@@ -23,6 +23,12 @@ void AddCardAction::ReadActionParameters()
 	Input* pIn = pGrid->GetInput();
 	pOut->PrintMessage("New Card: Type in card number ...");
 	cardNumber = pIn->GetInteger(pOut,Flag);
+	while (Flag != 0 || cardNumber < 1 || cardNumber > 12)
+	{
+		pOut->PrintMessage("Invalid Input!");
+		pOut->PrintMessage("Please type in a valid Card Number ...");
+		cardNumber = pIn->GetInteger(pOut, Flag);
+	}
 	pOut->PrintMessage("New Card: Click on its Cell ...");
 	cardPosition = pIn->GetCellClicked();
 	pOut->ClearStatusBar();
