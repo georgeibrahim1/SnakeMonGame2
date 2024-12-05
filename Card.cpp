@@ -7,7 +7,8 @@ Card::Card(const CellPosition & pos) : GameObject(pos) // sets the cell position
 
 void Card::SetCardNumber(int cnum)
 {
-	cardNumber = cnum; // needs validation
+	if (cnum > 0 && cnum < 14)
+		cardNumber = cnum; // needs validation(done)
 }
 
 int Card::GetCardNumber()
@@ -18,14 +19,14 @@ int Card::GetCardNumber()
 void Card::Draw(Output* pOut) const
 {
 
-	///TODO: call the appropriate Ouput function that draws a cell containing the "cardNumber" in "position"
-
-
+	///Done: call the appropriate Ouput function that draws a cell containing the "cardNumber" in "position"
+	pOut->DrawCell(GetPosition(), cardNumber);// Getposition() from GameObject.cpp
+	
 }
 
 void Card::ReadCardParameters(Grid * pGrid)
 {
-	// we should not make it pure virtual because some Cards doesn't have parameters
+    // we should not make it pure virtual because some Cards doesn't have parameters
 	// and if we make it pure virtual, that will make those Cards abstract classes
 }
 
