@@ -3,6 +3,10 @@
 #include "Input.h"
 #include "Output.h"
 #include "CardOne.h"
+#include <iostream>
+#include <chrono>
+#include <thread>
+
 
 AddCardAction::AddCardAction(ApplicationManager *pApp) : Action(pApp)
 {
@@ -18,14 +22,16 @@ void AddCardAction::ReadActionParameters()
 
 	///Done: Implement this function as mentioned in the guideline steps (numbered below) below
 	int Flag = 0;
+	int x, y;//for getpointclicked function
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
 	pOut->PrintMessage("New Card: Type in card number ...");
 	cardNumber = pIn->GetInteger(pOut,Flag);
-	while (Flag != 0 || cardNumber < 1 || cardNumber > 12)
+	while (Flag != 0 || cardNumber < 1 || cardNumber > 13)
 	{
 		pOut->PrintMessage("Invalid Input!");
+		this_thread::sleep_for(chrono::seconds(1));
 		pOut->PrintMessage("Please type in a valid Card Number ...");
 		cardNumber = pIn->GetInteger(pOut, Flag);
 	}
