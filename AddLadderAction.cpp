@@ -26,21 +26,21 @@ void AddLadderAction::ReadActionParameters()
 	int startcell, endcell; // Cellnumber of the start & end of the ladder
 	do {
 		// Read the startPos parameter
-		pOut->PrintMessage("New Ladder: Click on its Start Cell ...");
+		pOut->PrintMessage("New Ladder: Click on its Start Cell (bottom of ladder) ...");
 		startPos = pIn->GetCellClicked();
 
 		// Read the endPos parameter
-		pOut->PrintMessage("New Ladder: Click on its End Cell ...");
+		pOut->PrintMessage("New Ladder: Click on its End Cell (top of ladder) ...");
 		endPos = pIn->GetCellClicked();
 		startcell = startPos.GetCellNumFromPosition(startPos); // Cell no. of startPos
 		endcell = endPos.GetCellNumFromPosition(endPos); // Cell no. of endPos
-		if((endcell - startcell) % 11 != 0)
+		if((endcell - startcell) % 11 != 0 || (startcell>endcell))
 		{
 			pOut->PrintMessage("Can't draw the ladder!");
 			this_thread::sleep_for(chrono::seconds(1)); // makes a pause for 1 second
 
 		}
-	} while ((endcell - startcell) % 11 != 0); // This validation ensures the start cell & end cell are vertically aligned
+	} while ((endcell - startcell) % 11 != 0 || (startcell > endcell)); // This validation ensures the start cell & end cell are vertically aligned
 		
 
 	///Done: Make the needed validations on the read parameters
