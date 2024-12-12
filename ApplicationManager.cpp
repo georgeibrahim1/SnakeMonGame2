@@ -5,6 +5,8 @@
 #include "AddCardAction.h"
 #include "CopyCardAction.h"
 #include "DeleteObjectAction.h"
+#include "PasteCardAction.h"
+
 
 #include "RollDiceAction.h"
 
@@ -71,6 +73,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		// create an object of CopyCardtAction here
 
 		pAct = new CopyCardAction(this);
+		break;
+	case PASTE_CARD:
+		// create an object of PasteCardtAction here
+
+		pAct = new PasteCardAction(this);
 		break;
 	case DELETE_OBJECT:
 		// create an object of DeleteObjectAction here

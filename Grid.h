@@ -78,6 +78,8 @@ public:
 
 	void PrintErrorMessage(string msg); // Prints an error message on statusbar, Waits for mouse click then clears statusbar
 									    // We added this function once here because it is used many times by other classes
+	bool Grid::HasObject(CellPosition pos); // returns 1 if cell has an object, returns 0 if not. (added by team)
+	Card* Grid::HasCard(CellPosition pos); // returns 1 if cell has an object, returns 0 if not. (added by team)
 
 	~Grid(); // A destructor for any needed deallcations
 };

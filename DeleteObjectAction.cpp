@@ -36,13 +36,15 @@ void DeleteObjectAction::Execute()
 
 	Grid* pGrid = pManager->GetGrid(); // We get a pointer to the Grid from the ApplicationManager
 
-	// remove the GameObject of its Cell:
-	pGrid->RemoveObjectFromCell(Pos);
-
-	/* if (pGrid->)
+	if (pGrid->HasObject(Pos))
 	{
+		// remove the GameObject of its Cell:
+		pGrid->RemoveObjectFromCell(Pos);
+
+	}
+	
+	else
 		// Print an appropriate message
 		pGrid->PrintErrorMessage("Error:There is no object in cell ! Click to continue ...");
-	}
-	*/
+
 }

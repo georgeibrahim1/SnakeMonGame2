@@ -23,8 +23,6 @@ void CopyCardAction::ReadActionParameters()
 	pOut->PrintMessage("Copy Card: Click on the source cell ...");
 	SourceCell = pIn->GetCellClicked();
 
-
-	//not done yet: if source cell doesn't contain a card, cancel the operation
 	pOut->ClearStatusBar();
 }
 void CopyCardAction::Execute()
@@ -33,9 +31,20 @@ void CopyCardAction::Execute()
 	// and hence initializes its data members
 	ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid(); // We get a pointer to the Grid from the ApplicationManager
-	Card* pCard = new Card(SourceCell);  	// Create a Card object with the parameters read from the user
 
-	pGrid->SetClipboard(pCard); 	// Copy Card to Clipboard
+	if (pGrid->HasCard(SourceCell))
+	{
+		Card* pCard = pGrid->HasCard(SourceCell);  
+		pGrid->SetClipboard(pCard); 	// Copy Card to Clipboard
+		string Msg = "Card " + to_string(pCard->GetCardNumber()) + " Copied To Clipboard,  Click to continue ...";
+		pGrid->PrintErrorMessage(Msg);
+
+		//pGrid->PrintErrorMessage("Card  Copied To Clipboard,  Click to continue ...");
+
+	}
+	else 
+		pGrid->PrintErrorMessage("Error: Cell doesn't have a card ! Click to continue ...");
+
 
 
 

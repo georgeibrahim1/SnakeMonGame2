@@ -205,6 +205,28 @@ void Grid::PrintErrorMessage(string msg)
 	pIn->GetPointClicked(x, y);
 	pOut->ClearStatusBar();
 }
+bool Grid::HasObject(CellPosition pos)  // by team, check for class responsibilit y
+{
+	if (pos.IsValidCell()) // Check if valid position
+	{
+		// Get the previous GameObject of the Cell
+		GameObject* pPrevObject = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
+		if (pPrevObject)  // the cell already contains a game object
+			return true;
+		else 
+			return false; // Cell doesn't contain an oject
+	}
+	return false; // if not a valid position
+}
+Card* Grid::HasCard(CellPosition pos)  // by team, check for class responsibility
+{
+	if (pos.IsValidCell()) // Check if valid position
+		return CellList[pos.VCell()][pos.HCell()]->HasCard();
+	else
+		return NULL;
+
+}
+
 
 
 Grid::~Grid()
