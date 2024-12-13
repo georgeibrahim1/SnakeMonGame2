@@ -32,7 +32,7 @@ void CopyCardAction::Execute()
 	ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid(); // We get a pointer to the Grid from the ApplicationManager
 
-	if (pGrid->HasCard(SourceCell))
+	if (pGrid->HasCard(SourceCell)) // Check if the cell has a card
 	{
 		Card* pCard = pGrid->HasCard(SourceCell);  
 		pGrid->SetClipboard(pCard); 	// Copy Card to Clipboard

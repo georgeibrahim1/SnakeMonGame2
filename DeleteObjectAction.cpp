@@ -40,9 +40,7 @@ void DeleteObjectAction::Execute()
 	{
 		// remove the GameObject of its Cell:
 		pGrid->RemoveObjectFromCell(Pos);
-
 	}
-	
 	else
 		// Print an appropriate message
 		pGrid->PrintErrorMessage("Error:There is no object in cell ! Click to continue ...");
