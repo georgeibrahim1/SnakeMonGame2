@@ -3,6 +3,9 @@
 #include "Input.h"
 #include "Output.h"
 #include "Ladder.h"
+#include <iostream>
+#include <chrono>
+#include <thread>
 
 AddLadderAction::AddLadderAction(ApplicationManager *pApp) : Action(pApp)
 {
@@ -20,17 +23,27 @@ void AddLadderAction::ReadActionParameters()
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
 
-	// Read the startPos parameter
-	pOut->PrintMessage("New Ladder: Click on its Start Cell ...");
-	startPos = pIn->GetCellClicked();
+	int startcell, endcell; // Cellnumber of the start & end of the ladder
+	do {
+		// Read the startPos parameter
+		pOut->PrintMessage("New Ladder: Click on its Start Cell (bottom of ladder) ...");
+		startPos = pIn->GetCellClicked();
 
-	// Read the endPos parameter
-	pOut->PrintMessage("New Ladder: Click on its End Cell ...");
-	endPos = pIn->GetCellClicked();
+		// Read the endPos parameter
+		pOut->PrintMessage("New Ladder: Click on its End Cell (top of ladder) ...");
+		endPos = pIn->GetCellClicked();
+		startcell = startPos.GetCellNumFromPosition(startPos); // Cell no. of startPos
+		endcell = endPos.GetCellNumFromPosition(endPos); // Cell no. of endPos
+		if((endcell - startcell) % 11 != 0 || (startcell>endcell))
+		{
+			pOut->PrintMessage("Can't draw the ladder!");
+			this_thread::sleep_for(chrono::seconds(1)); // makes a pause for 1 second
 
-    
+		}
+	} while ((endcell - startcell) % 11 != 0 || (startcell > endcell)); // This validation ensures the start cell & end cell are vertically aligned
+		
 
-	///TODO: Make the needed validations on the read parameters
+	///Done: Make the needed validations on the read parameters
 
 	
 

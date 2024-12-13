@@ -22,7 +22,6 @@ void AddCardAction::ReadActionParameters()
 
 	///Done: Implement this function as mentioned in the guideline steps (numbered below) below
 	int Flag = 0;
-	int x, y;//for getpointclicked function
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
