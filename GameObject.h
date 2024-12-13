@@ -34,7 +34,7 @@ public:
 	//virtual void Load(ifstream &Infile) = 0;	// Loads and Reads the GameObject parameters from the file
 
 	// checks if the cell has a 
-	virtual bool IsOverlapping(GameObject* newObj) const = 0; 
+	virtual bool IsOverlapping(GameObject* newObj) const ; 
 
 	virtual ~GameObject(); // Virtual destructor
 };
