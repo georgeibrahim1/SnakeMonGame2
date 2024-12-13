@@ -2,6 +2,7 @@
 #include "Action.h"
 class CutCardAction : public Action
 {
+	CellPosition SourceCell;
 
 public:
 	CutCardAction(ApplicationManager *pApp);

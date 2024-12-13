@@ -30,7 +30,9 @@ CellPosition Cell::GetCellPosition() const
 
 bool Cell::SetGameObject(GameObject * pGObj)
 {
-	if (pGameObject != NULL) // already contains one
+	//if (pGameObject != NULL) // already contains one
+	if (pGameObject != NULL && pGObj != NULL) // already contains one
+
 		return false; // do NOT add it and return false
 
 	pGameObject = pGObj;
