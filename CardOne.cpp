@@ -3,6 +3,7 @@
 CardOne::CardOne(const CellPosition & pos) : Card(pos) // set the cell position of the card
 {
 	cardNumber = 1; // set the inherited cardNumber data member with the card number (1 here)
+	walletAmount = 0;
 }
 
 CardOne::~CardOne(void)
