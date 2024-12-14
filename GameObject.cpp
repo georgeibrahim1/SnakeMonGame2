@@ -13,6 +13,7 @@ CellPosition GameObject::GetPosition() const
 
 bool GameObject::IsOverlapping(GameObject* newObj) const
 {
+	return 0;
 
 }
 
