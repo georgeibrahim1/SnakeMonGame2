@@ -38,6 +38,17 @@ Grid::Grid(Input * pIn, Output * pOut) : pIn(pIn), pOut(pOut) // Initializing pI
 
 // ========= Adding or Removing GameObjects to Cells =========
 
+bool Grid::IsOverlapping(GameObject* newObj) const {
+	for (int v = 0; v < NumVerticalCells; ++v) {
+		for (int h = 0; h < NumHorizontalCells; ++h) {
+			GameObject* existingObj = CellList[v][h]->GetGameObject();
+			if (existingObj && existingObj->IsOverlapping(newObj)) {
+				return true; 
+			}
+		}
+	}
+	return false; 
+}
 
 bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation is needed
 {

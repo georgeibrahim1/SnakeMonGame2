@@ -33,6 +33,9 @@ public:
 	//virtual void Save(ofstream &OutFile) = 0;	// Saves the GameObject parameters to the file
 	//virtual void Load(ifstream &Infile) = 0;	// Loads and Reads the GameObject parameters from the file
 
+	// checks if the cell has a 
+	virtual bool IsOverlapping(GameObject* newObj) const ; 
+
 	virtual ~GameObject(); // Virtual destructor
 };
 

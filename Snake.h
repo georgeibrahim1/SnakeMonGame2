@@ -14,6 +14,8 @@ public:
 
 	CellPosition GetEndPosition() const; // A getter for the endCellPos data member
 
+	virtual bool IsOverlapping(GameObject* newObj) const;
+
 	virtual ~Snake(); // Virtual destructor
 };
 

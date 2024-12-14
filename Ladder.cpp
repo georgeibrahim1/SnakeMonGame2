@@ -6,15 +6,15 @@ Ladder::Ladder(const CellPosition & startCellPos, const CellPosition & endCellPo
 	///DONE : Do the needed validation
 	if (endCellPos.IsValidCell())
 	{
-		if (startCellPos.HCell() == endCellPos.HCell())
-		{
-			if (startCellPos.GetCellNum() < endCellPos.GetCellNum())
+		//if (startCellPos.HCell() == endCellPos.HCell())
+		//{
+			//if (startCellPos.GetCellNum() < endCellPos.GetCellNum())
 				this->endCellPos = endCellPos;
-			else
-				return; 
-		}
-		else
-			return;
+			///else
+				//return; 
+		//}
+		//else
+			//return;
 	}
 	else
 		return;
@@ -41,6 +41,21 @@ void Ladder::Apply(Grid* pGrid, Player* pPlayer)
 	   
 	pGrid->PrintErrorMessage("You have reached a ladder. Click to continue ...");
     pGrid->UpdatePlayerCell(pPlayer, endCellPos);	
+}
+
+bool Ladder::IsOverlapping(GameObject* newObj) const
+{
+	Ladder* otherLadder = dynamic_cast<Ladder*>(newObj);
+	if (!otherLadder)
+		return false; 
+
+	
+	if ((this->position.VCell() <= otherLadder->position.VCell()) && (this->position.VCell() >= otherLadder->endCellPos.VCell()) ||
+		(this->endCellPos.VCell() <= otherLadder->position.VCell()) && (this->endCellPos.VCell() >= otherLadder->endCellPos.VCell()) )
+	{
+		return false; 
+	}
+	
 }
 
 CellPosition Ladder::GetEndPosition() const
