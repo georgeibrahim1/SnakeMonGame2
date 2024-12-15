@@ -46,19 +46,20 @@ void Ladder::Apply(Grid* pGrid, Player* pPlayer)
 bool Ladder::IsOverlapping(GameObject* newObj) const
 {
 	Ladder* otherLadder = dynamic_cast<Ladder*>(newObj);
-	if ((this->position.HCell() == otherLadder->position.HCell()) && (this->endCellPos.HCell() == otherLadder->endCellPos.HCell()))
-	{
+	
 		if (!otherLadder)
 			return false;
-
-
-		if ((this->position.VCell() <= otherLadder->position.VCell()) && (this->position.VCell() >= otherLadder->endCellPos.VCell()) ||
-			(this->endCellPos.VCell() <= otherLadder->position.VCell()) && (this->endCellPos.VCell() >= otherLadder->endCellPos.VCell()))
+		if ((this->position.HCell() == otherLadder->position.HCell()) && (this->endCellPos.HCell() == otherLadder->endCellPos.HCell()))
 		{
-			return true;
+			if (((this->position.VCell() >= otherLadder->endCellPos.VCell()) && (this->endCellPos.VCell() <= otherLadder->position.VCell())))
+			{
+				return true;
+			}
 		}
-	}
-	return false;
+		else
+		{
+			return false;
+		}
 }
 
 CellPosition Ladder::GetEndPosition() const

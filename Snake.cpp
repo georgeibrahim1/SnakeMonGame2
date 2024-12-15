@@ -45,16 +45,21 @@ void Snake::Apply(Grid* pGrid, Player* pPlayer)
 bool Snake::IsOverlapping(GameObject* newObj) const
 {
 	Snake* otherSnake = dynamic_cast<Snake*>(newObj);
-	if (!otherSnake)
-		return false;
+	
+		if (!otherSnake)
+			return false;
 
-
-	if ((this->position.VCell() >= otherSnake->position.VCell()) && (this->position.VCell() <= otherSnake->endCellPos.VCell()) ||
-		(this->endCellPos.VCell() >= otherSnake->position.VCell()) && (this->endCellPos.VCell() <= otherSnake->endCellPos.VCell()))
-	{
-		return false;
-	}
-
+		if ((this->position.HCell() == otherSnake->position.HCell())&& (this->endCellPos.HCell() == otherSnake->endCellPos.HCell()))
+		{
+			if (((this->position.VCell() <= otherSnake->endCellPos.VCell()) && (this->endCellPos.VCell() >= otherSnake->position.VCell())))
+			{
+			return true;
+			}
+		}
+		else
+		{
+			return false;
+		}
 }
 
 CellPosition Snake::GetEndPosition() const

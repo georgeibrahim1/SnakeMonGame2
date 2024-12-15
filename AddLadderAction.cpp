@@ -82,7 +82,7 @@ void AddLadderAction::Execute()
 	}
 	int startcell = startPos.GetCellNumFromPosition(startPos); // Cell no. of startPos
 	int endcell = endPos.GetCellNumFromPosition(endPos); // Cell no. of endPos
-	if (startcell > endcell)
+	if (startcell > endcell && (endcell - startcell) % 11 == 0)// Added 2nd condition cuz without it the "Same Column" Error won't be executed if startcell is greater than endcell (otherwise no need for this validation)
 	{
 		pGrid->PrintErrorMessage("End Cell can't be smaller than Start Cell!");
 		return;

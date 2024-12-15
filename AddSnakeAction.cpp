@@ -21,7 +21,7 @@ void AddSnakeAction::ReadActionParameters()
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
 
-	int startcell, endcell; // Cellnumber of the start & end of the snake
+	/*int startcell, endcell; // Cellnumber of the start & end of the snake
 	do {
 		// Read the startPos parameter
 		pOut->PrintMessage("New Snake: Click on its Start Cell (top of snake) ...");
@@ -38,8 +38,13 @@ void AddSnakeAction::ReadActionParameters()
 			this_thread::sleep_for(chrono::seconds(1)); // makes a pause for 1 second
 
 		}
-	} while ((endcell - startcell) % 11 != 0 || (endcell > startcell)); // This validation ensures the start cell & end cell are vertically aligned
-
+	} while ((endcell - startcell) % 11 != 0 || (endcell > startcell)); // This validation ensures the start cell & end cell are vertically aligned*/
+	// Read the startPos parameter
+	pOut->PrintMessage("New Snake: Click on its Start Cell (top of snake) ...");
+	startPos = pIn->GetCellClicked();
+	// Read the endPos parameter
+	pOut->PrintMessage("New Snake: Click on its End Cell (bottom of snake) ...");
+	endPos = pIn->GetCellClicked();
 	pOut->ClearStatusBar();
 }
 // Execute the action
@@ -54,6 +59,37 @@ void AddSnakeAction::Execute()
 
 	Grid* pGrid = pManager->GetGrid(); // We get a pointer to the Grid from the ApplicationManager
 
+	if (!startPos.IsValidCell())
+	{
+		pGrid->PrintErrorMessage("Invalid Cell");
+		this_thread::sleep_for(chrono::seconds(1)); // makes a pause for 1 second
+		return;
+	}
+	int startcell = startPos.GetCellNumFromPosition(startPos); // Cell no. of startPos
+	int endcell = endPos.GetCellNumFromPosition(endPos); // Cell no. of endPos
+	if (endcell > startcell && ((startcell - endcell) % 11 == 0)) // Added 2nd condition cuz without it the "Same Column" Error won't be executed if endcell is greater than startcell (otherwise no need for this validation)
+	{
+		pGrid->PrintErrorMessage("Start Cell can't be smaller than End Cell!");
+		return;
+	}
+	if ((startcell - endcell) % 11 != 0)
+	{
+		pGrid->PrintErrorMessage("Start Cell & End Cell must be in the same column!");
+		return;
+	}
+	if (pGrid->HasObject(startPos))
+	{
+		pGrid->PrintErrorMessage("End Cell cannot be the start of another ladder or snake");
+		return;
+	}
+
+	GameObject* C = pSnake;
+
+	if (pGrid->IsOverlapping(C))
+	{
+		pGrid->PrintErrorMessage("Overlapping occured!");
+		return;
+	}
 	// Add the card object to the GameObject of its Cell:
 	bool added = pGrid->AddObjectToCell(pSnake);
 
