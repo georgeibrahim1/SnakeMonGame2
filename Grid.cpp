@@ -156,7 +156,8 @@ Ladder * Grid::GetNextLadder(const CellPosition & position)
 
 
 			///DONE: Check if CellList[i][j] has a ladder, if yes return it
-			return CellList[i][j]->HasLadder();
+			if(CellList[i][j]->HasLadder())
+				return CellList[i][j]->HasLadder();
 
 		}
 		startH = 0; // because in the next above rows, we will search from the first left cell (hCell = 0) to the right

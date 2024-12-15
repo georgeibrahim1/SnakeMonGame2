@@ -40,7 +40,7 @@ void Ladder::Apply(Grid* pGrid, Player* pPlayer)
 	//    Review the "pGrid" functions and decide which function can be used for that
 	   
 	pGrid->PrintErrorMessage("You have reached a ladder. Click to continue ...");
-    pGrid->UpdatePlayerCell(pPlayer, endCellPos);	
+    pGrid->UpdatePlayerCell(pPlayer, endCellPos);
 }
 
 bool Ladder::IsOverlapping(GameObject* newObj) const

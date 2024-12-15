@@ -15,7 +15,6 @@ void Card3::Apply(Grid* pGrid, Player* pPlayer)
 
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 
-
 	// == Here are some guideline steps (numbered below) (numbered below) to implement this function ==
 
 	 // 1- Call Apply() of the base class Card to print the message that you reached this card number
@@ -23,10 +22,13 @@ void Card3::Apply(Grid* pGrid, Player* pPlayer)
 	Card::Apply(pGrid, pPlayer);
 
 	// 2- Move the player forward to the start of the next ladder. (If no ladders ahead, do nothing)
-
 	Ladder* pLadder = pGrid->GetNextLadder((this)->GetPosition()); //checks for a ladder ahead (from the position of the card onwards)
-	if(pLadder) // if there exists a ladder ahead
-	pGrid->UpdatePlayerCell(pPlayer, pLadder->GetPosition());
 
+	if (pLadder) // if there exists a ladder ahead
+	{
+		pGrid->UpdatePlayerCell(pPlayer, pLadder->GetPosition());
+	}
+	else
+		pGrid->PrintErrorMessage("No ladders Ahead, Click to continue ......");
 }
 

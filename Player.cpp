@@ -131,10 +131,28 @@ void Player::Move(Grid * pGrid, int diceNumber)
 
 	pGrid->UpdatePlayerCell(this, pos);
 
-	GameObject * existingLadder_or_Snake = pCell->GetGameObject(); 
+	//GameObject * existingLadder_or_Snake = pCell->GetGameObject();
+	//if(pCell->GetGameObject()) // checks if the cell has a ladder or snake or card, if it points to null don't call apply()
+	//	existingLadder_or_Snake->Apply(pGrid, this);
 
-	existingLadder_or_Snake->Apply(pGrid, this);
-	
+
+
+	GameObject* existingLadder_or_Snake;
+	do 
+	{
+		existingLadder_or_Snake = pCell->GetGameObject();
+		if (existingLadder_or_Snake)
+			existingLadder_or_Snake->Apply(pGrid, this);
+
+	} while (existingLadder_or_Snake);
+
+
+
+	//GameObject* existingCard = pCell->GetGameObject();
+	//if (pCell->GetGameObject()) // checks if the cell has a card, if it points to null don't call apply()
+		//existingCard->Apply(pGrid, this);
+
+
 	if (pos.GetCellNum() == 99) {
 		pGrid->SetEndGame(true);
 	}
