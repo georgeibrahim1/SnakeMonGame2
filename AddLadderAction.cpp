@@ -3,6 +3,7 @@
 #include "Input.h"
 #include "Output.h"
 #include "Ladder.h"
+#include "GameObject.h"
 #include <iostream>
 #include <chrono>
 #include <thread>
@@ -24,23 +25,33 @@ void AddLadderAction::ReadActionParameters()
 	Input* pIn = pGrid->GetInput();
 
 	int startcell, endcell; // Cellnumber of the start & end of the ladder
-	do {
+	
 		// Read the startPos parameter
 		pOut->PrintMessage("New Ladder: Click on its Start Cell (bottom of ladder) ...");
 		startPos = pIn->GetCellClicked();
-
+		/*if (!startPos.IsValidCell())
+		{
+			pOut->PrintMessage("Invalid Cell");
+			this_thread::sleep_for(chrono::seconds(1)); // makes a pause for 1 second
+			return;
+		}*/
 		// Read the endPos parameter
 		pOut->PrintMessage("New Ladder: Click on its End Cell (top of ladder) ...");
 		endPos = pIn->GetCellClicked();
-		startcell = startPos.GetCellNumFromPosition(startPos); // Cell no. of startPos
+		/*startcell = startPos.GetCellNumFromPosition(startPos); // Cell no. of startPos
 		endcell = endPos.GetCellNumFromPosition(endPos); // Cell no. of endPos
-		if((endcell - startcell) % 11 != 0 || (startcell>endcell))
+		if (startcell>endcell)
 		{
-			pOut->PrintMessage("Can't draw the ladder!");
-			this_thread::sleep_for(chrono::seconds(1)); // makes a pause for 1 second
-
+			pOut->PrintMessage("End Cell can't be smaller than Start Cell!");
+			return;
 		}
-	} while ((endcell - startcell) % 11 != 0 || (startcell > endcell)); // This validation ensures the start cell & end cell are vertically aligned
+		if((endcell - startcell) % 11 != 0)
+		{
+			pOut->PrintMessage("Start Cell & End Cell must be in the same column!");
+			return;
+		}
+
+	 // This validation ensures the start cell & end cell are vertically aligned*/
 		
 
 	///Done: Make the needed validations on the read parameters
@@ -61,8 +72,44 @@ void AddLadderAction::Execute()
 
 	// Create a Ladder object with the parameters read from the user
 	Ladder * pLadder = new Ladder(startPos, endPos);
-
+	
 	Grid * pGrid = pManager->GetGrid(); // We get a pointer to the Grid from the ApplicationManager
+	if (!startPos.IsValidCell())
+	{
+		pGrid->PrintErrorMessage("Invalid Cell");
+		this_thread::sleep_for(chrono::seconds(1)); // makes a pause for 1 second
+		return;
+	}
+	int startcell = startPos.GetCellNumFromPosition(startPos); // Cell no. of startPos
+	int endcell = endPos.GetCellNumFromPosition(endPos); // Cell no. of endPos
+	if (startcell > endcell)
+	{
+		pGrid->PrintErrorMessage("End Cell can't be smaller than Start Cell!");
+		return;
+	}
+	if ((endcell - startcell) % 11 != 0)
+	{
+		pGrid->PrintErrorMessage("Start Cell & End Cell must be in the same column!");
+		return;
+	}
+	if (pGrid->HasObject(endPos))
+	{
+		pGrid->PrintErrorMessage("End Cell cannot be the start of another ladder or snake");
+		return;
+	}
+
+	GameObject* C = pLadder;
+	
+	if (pGrid->IsOverlapping(C))
+	{
+		pGrid->PrintErrorMessage("Overlapping occured!");
+		return;
+	}
+	//if(pGrid->IsOverlapping)
+	
+
+
+
 
 	// Add the card object to the GameObject of its Cell:
 	bool added = pGrid->AddObjectToCell(pLadder);
