@@ -8,6 +8,8 @@
 #include "CutCardAction.h"
 #include "DeleteObjectAction.h"
 #include "PasteCardAction.h"
+#include "NewGameAction.h"
+#include "SwitchToPlayMode.h"
 
 
 #include "RollDiceAction.h"
@@ -95,11 +97,16 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new DeleteObjectAction(this);
 		break;
 
+	case NEW_GAME:
+		// create an object of NewGameAction here
+		pAct = new NewGameAction(this);
+		break;
+
 	case EXIT:
 		break;
 
 	case TO_PLAY_MODE:
-		pOut->CreatePlayModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
+		pAct = new SwitchToPlayMode(this);
 		break;
 
 	case ROLL_DICE:

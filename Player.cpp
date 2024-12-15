@@ -2,12 +2,15 @@
 
 #include "GameObject.h"
 
-Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerNum(playerNum)
+Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerNum(playerNum) , turnCount(0)
 {
-	this->pCell = pCell;
-	this->turnCount = 0;
-
-	// Make all the needed initialization or validations
+	if (pCell)
+		this->pCell = pCell;
+	else
+		return;
+	
+	if (!(playerNum >= 0 && playerNum <= 3)) 
+		return;  
 }
 
 // ====== Setters and Getters ======
@@ -24,8 +27,11 @@ Cell* Player::GetCell() const
 
 void Player::SetWallet(int wallet)
 {
-	this->wallet = wallet;
-	// Make any needed validations
+	if (wallet >= 0  && wallet <= 100) {
+		this->wallet = wallet;
+	}
+	else
+		return;
 }
 
 int Player::GetWallet() const
@@ -38,23 +44,45 @@ int Player::GetTurnCount() const
 	return turnCount;
 }
 
+void Player::ResetTurnCount() 
+{
+		turnCount == 0;	
+}
+
+void Player::ResetStepCount()
+{
+	stepCount == 0;
+}
+
 // ====== Drawing Functions ======
 
 void Player::Draw(Output* pOut) const
 {
+	if (pOut == nullptr) 
+		return;
+
 	color playerColor = UI.PlayerColors[playerNum];
 
+	CellPosition playerCellPos = pCell->GetCellPosition(); 
 
-	///TODO: use the appropriate output function to draw the player with "playerColor"
+	pOut->DrawPlayer(playerCellPos ,playerNum , playerColor);
+
+	///DONE: use the appropriate output function to draw the player with "playerColor"
 
 }
 
 void Player::ClearDrawing(Output* pOut) const
 {
+	if (pOut == nullptr)
+		return;
+
 	color cellColor = pCell->HasCard() ? UI.CellColor_HasCard : UI.CellColor_NoCard;
+
+	CellPosition playerCellPos = pCell->GetCellPosition();
 	
+	pOut->DrawPlayer(playerCellPos, playerNum, cellColor);
 	
-	///TODO: use the appropriate output function to draw the player with "cellColor" (to clear it)
+	///DONE: use the appropriate output function to draw the player with "cellColor" (to clear it)
 
 }
 
@@ -63,7 +91,7 @@ void Player::ClearDrawing(Output* pOut) const
 void Player::Move(Grid * pGrid, int diceNumber)
 {
 
-	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
+	///DONE: Implement this function as mentioned in the guideline steps (numbered below) below
 
 
 	// == Here are some guideline steps (numbered below) to implement this function ==
@@ -85,6 +113,32 @@ void Player::Move(Grid * pGrid, int diceNumber)
 	// 6- Apply() the game object of the reached cell (if any)
 
 	// 7- Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
+
+	++turnCount; 
+	++stepCount;
+	justRolledDiceNum = diceNumber;
+
+	if (turnCount == 3)
+	{
+		wallet += 50; //temporary number
+		turnCount = 0; 
+		return;
+	}
+
+	CellPosition pos = pCell->GetCellPosition();
+
+	pos.AddCellNum(diceNumber);
+
+	pGrid->UpdatePlayerCell(this, pos);
+
+	GameObject * existingLadder_or_Snake = pCell->GetGameObject(); 
+
+	existingLadder_or_Snake->Apply(pGrid, this);
+	
+	if (pos.GetCellNum() == 99) {
+		pGrid->SetEndGame(true);
+	}
+
 
 }
 

@@ -139,6 +139,12 @@ Player * Grid::GetCurrentPlayer() const
 	return PlayerList[currPlayerNumber];
 }
 
+void Grid::SetCurrentPlayer(int PlayerNum)
+{
+	if (PlayerNum >= 0 && PlayerNum < MaxPlayerCount)
+		currPlayerNumber = PlayerNum;
+}
+
 Ladder * Grid::GetNextLadder(const CellPosition & position)
 {
 	
@@ -239,6 +245,25 @@ Card* Grid::HasCard(CellPosition pos)  // by team, check for class responsibilit
 
 }
 
+void Grid::ResetGame()
+{
+	for (int i = 0; i < MaxPlayerCount; i++)
+	{
+		Player* pPlayer = PlayerList[i];
+
+		Cell firstcell(8,0);
+		
+		UpdatePlayerCell(pPlayer, firstcell.GetCellPosition() );
+
+		pPlayer->SetWallet(100);
+
+		pPlayer->ResetTurnCount();
+
+		pPlayer->ResetStepCount();
+	}
+
+	SetCurrentPlayer(0);
+}
 
 
 Grid::~Grid()

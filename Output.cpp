@@ -23,6 +23,7 @@ Output::Output()
 	UI.CellWidth = UI.width / NumHorizontalCells;
 	UI.CellHeight = (UI.height - UI.ToolBarHeight - UI.StatusBarHeight) / NumVerticalCells;
 
+
 	// Pen Colors of messages of status bar and players' info
 	UI.MsgColor = DARKRED;
 	UI.PlayerInfoColor = DARKSLATEBLUE;

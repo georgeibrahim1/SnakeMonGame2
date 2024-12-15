@@ -84,6 +84,11 @@ public:
 
 	bool IsOverlapping(GameObject* newObj) const;
 
+	void ResetGame();
+
+	void Grid::SetCurrentPlayer(int);
+	
+
 	~Grid(); // A destructor for any needed deallcations
 };
 
