@@ -32,9 +32,16 @@ void DeleteObjectAction::Execute()
 	// The first line of any Action Execution is to read its parameter first 
 	// and hence initializes its data members
 	ReadActionParameters();
-
-
+	
 	Grid* pGrid = pManager->GetGrid(); // We get a pointer to the Grid from the ApplicationManager
+
+	//if (Pos.IsValidCell == -1 || Pos.GetCellNum() < 1)
+	if (!(Pos.IsValidCell()))
+	{
+		pGrid->PrintErrorMessage("you didn't click anywhere on the grid! Click to continue....");
+		return;
+	}
+
 
 	if (pGrid->HasObject(Pos))
 	{
