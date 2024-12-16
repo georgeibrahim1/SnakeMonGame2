@@ -144,7 +144,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 		if (existingLadder_or_Snake)
 			existingLadder_or_Snake->Apply(pGrid, this);
 
-	} while (existingLadder_or_Snake);
+	} while (existingLadder_or_Snake); 
 
 
 
