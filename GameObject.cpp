@@ -10,7 +10,7 @@ CellPosition GameObject::GetPosition() const
 {
 	return position;
 }
-void GameObject:: SetPosition(const CellPosition & pos)
+void GameObject:: SetPosition(const CellPosition & pos) // by team
 {
 	this->position = pos; // Sets Position
 }

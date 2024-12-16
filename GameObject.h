@@ -15,7 +15,7 @@ public:
 	GameObject(const CellPosition & pos); // Constructor for initializing data members
 	
 	CellPosition GetPosition() const;     // A Getter for position
-	void SetPosition(const CellPosition& pos) ; // by Team          A Setter for Position
+	void SetPosition(const CellPosition& pos) ; // by Team, A Setter for Position
 
 	// ============ Virtual Functions ============
 
