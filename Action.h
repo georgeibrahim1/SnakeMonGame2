@@ -20,7 +20,6 @@ public:
 	                                         // (code depends on action type so virtual)
 
 	virtual void Execute() = 0;  // Executes action (code depends on action type so virtual)
-	Card* SwitchCases(Card* pCard, int CardNumber, CellPosition pos);
 	virtual ~Action();  // Virtual Destructor
 };
 

@@ -21,10 +21,10 @@ void Card4::Apply(Grid* pGrid, Player* pPlayer)
 
 	Card::Apply(pGrid, pPlayer);
 
-	// 2- Move the player forward to the start of the next ladder. (If no ladders ahead, do nothing)
-	Snake* pSnake = pGrid->GetNextSnake((this)->GetPosition()); //checks for a ladder ahead (from the position of the card onwards)
+	// 2- Move the player forward to the start of the next Snake. (If no snake ahead, do nothing)
+	Snake* pSnake = pGrid->GetNextSnake((this)->GetPosition()); //checks for a Snake ahead (from the position of the card onwards)
 
-	if (pSnake) // if there exists a ladder ahead
+	if (pSnake) // if there exists a snake ahead
 	{
 		pGrid->UpdatePlayerCell(pPlayer, pSnake->GetPosition());
 	}

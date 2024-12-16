@@ -7,7 +7,7 @@ public:
 	Card4(const CellPosition& pos); // A Constructor takes card position
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of Card4 on the passed Player
-	// Moves the player forward to the start of the next ladder. (If no ladders ahead, nothing)
+	// Moves the player forward to the start of the next snake. (If no snake ahead, nothing)
 
 	virtual ~Card4(); // A Virtual Destructor
 };
