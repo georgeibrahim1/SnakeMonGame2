@@ -4,6 +4,7 @@
 #include "Output.h"
 #include "Ladder.h"
 #include "GameObject.h"
+#include "Card.h"
 #include <iostream>
 #include <chrono>
 #include <thread>
@@ -92,13 +93,15 @@ void AddLadderAction::Execute()
 		pGrid->PrintErrorMessage("Start Cell & End Cell must be in the same column!");
 		return;
 	}
+	/*GameObject* cardobject = cardobject->GetCopy();
+	Card* Cardobject = dynamic_cast<Card*>(cardobject);*/
 	if (pGrid->HasObject(endPos))
 	{
-		pGrid->PrintErrorMessage("End Cell cannot be the start of another ladder or snake");
+		pGrid->PrintErrorMessage("End Cell cannot be the start of another ladder or snake");//This error occurs when Top of New Ladder is with Bottom of Old Ladder or with Head of Snake
 		return;
 	}
 
-	GameObject* C = pLadder;
+	GameObject* C = pLadder;// A pointer of type gameobject to send it to overlap function
 	
 	if (pGrid->IsOverlapping(C))
 	{

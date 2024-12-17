@@ -77,9 +77,9 @@ void AddSnakeAction::Execute()
 		pGrid->PrintErrorMessage("Start Cell & End Cell must be in the same column!");
 		return;
 	}
-	if (pGrid->HasObject(startPos))
+	if (pGrid->HasObject(endPos))
 	{
-		pGrid->PrintErrorMessage("End Cell cannot be the start of another ladder or snake");
+		pGrid->PrintErrorMessage("End Cell cannot be the start of another ladder or snake");//This error occurs when Tail of New Snake is with Head of Old Snake or Bottom of Ladder
 		return;
 	}
 
