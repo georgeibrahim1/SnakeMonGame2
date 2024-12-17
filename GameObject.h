@@ -36,7 +36,7 @@ public:
 
 	// checks if the cell has a 
 	virtual bool IsOverlapping(GameObject* newObj) const ; 
-
+	//virtual GameObject* GetCopy();
 	virtual ~GameObject(); // Virtual destructor
 };
 

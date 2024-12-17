@@ -20,6 +20,10 @@ bool GameObject::IsOverlapping(GameObject* newObj) const
 	return 0;
 
 }
+/*GameObject* GameObject::GetCopy()
+{
+	return NULL;
+}*/
 
 GameObject::~GameObject()
 {
