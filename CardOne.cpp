@@ -1,5 +1,7 @@
 #include "CardOne.h"
-
+#include <iostream>
+#include <chrono>
+#include <thread>
 CardOne::CardOne(const CellPosition & pos) : Card(pos) // set the cell position of the card
 {
 	cardNumber = 1; // set the inherited cardNumber data member with the card number (1 here)
@@ -14,8 +16,21 @@ void CardOne::ReadCardParameters(Grid * pGrid)
 {
 	
 	
-	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
+	///DONE: Implement this function as mentioned in the guideline steps (numbered below) below
 
+	Output* pOut = pGrid->GetOutput();
+	Input* pIn = pGrid->GetInput();
+	pOut->PrintMessage("New CardOne: Enter its wallet amount to decrease player's Total Wallet ...");
+	int Flag=0;
+	walletAmount = pIn->GetInteger(pOut, Flag);
+	while (Flag != 0 || walletAmount < 0)
+	{
+		pOut->PrintMessage("Invalid Input!");
+		this_thread::sleep_for(chrono::seconds(1));
+		pOut->PrintMessage("Please type in a valid Number ...");
+		walletAmount = pIn->GetInteger(pOut, Flag);
+	}
+	pOut->ClearStatusBar();
 
 	// == Here are some guideline steps (numbered below) (numbered below) to implement this function ==
 
@@ -40,7 +55,8 @@ void CardOne::Apply(Grid* pGrid, Player* pPlayer)
 		
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 	
-
+	Card::Apply(pGrid, pPlayer);
+	pPlayer->SetWallet(pPlayer->GetWallet() - walletAmount);
 	// == Here are some guideline steps (numbered below) (numbered below) to implement this function ==
 
 	// 1- Call Apply() of the base class Card to print the message that you reached this card number

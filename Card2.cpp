@@ -1,1 +1,37 @@
 #include "Card2.h"
+#include <iostream>
+#include <chrono>
+#include <thread>
+Card2::Card2(const CellPosition& pos) : Card(pos) // set the cell position of the card
+{
+	cardNumber = 2; // set the inherited cardNumber data member with the card number (2 here)
+	walletAmount = 0;
+}
+
+Card2::~Card2(void)
+{
+}
+
+void Card2::ReadCardParameters(Grid* pGrid)
+{
+	Output* pOut = pGrid->GetOutput();
+	Input* pIn = pGrid->GetInput();
+	pOut->PrintMessage("New CardTwo: Enter its wallet amount to increase player's Total Wallet ...");
+	int Flag = 0;
+	walletAmount = pIn->GetInteger(pOut, Flag);
+	while (Flag != 0 || walletAmount < 0)
+	{
+		pOut->PrintMessage("Invalid Input!");
+		this_thread::sleep_for(chrono::seconds(1));
+		pOut->PrintMessage("Please type in a valid Number ...");
+		walletAmount = pIn->GetInteger(pOut, Flag);
+	}
+	pOut->ClearStatusBar();
+}
+
+void Card2::Apply(Grid* pGrid, Player* pPlayer)
+{
+	Card::Apply(pGrid, pPlayer);
+	pPlayer->SetWallet(pPlayer->GetWallet() + walletAmount);
+
+}

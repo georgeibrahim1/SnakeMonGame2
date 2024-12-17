@@ -3,6 +3,7 @@
 #include "Input.h"
 #include "Output.h"
 #include "CardOne.h"
+#include "Card2.h"
 #include "Card3.h"
 #include "Card4.h"
 
@@ -69,12 +70,20 @@ void AddCardAction::Execute()
 	// 2- Switch case on cardNumber data member and create the appropriate card object type
 
 	AddCardAction :: ReadActionParameters();
-
+	Grid* pGrid = pManager->GetGrid();
+	if (pGrid->HasObject(cardPosition))
+	{
+		pGrid->PrintErrorMessage("This cell has another object!");
+			return;
+	}
 	Card * pCard = NULL; // will point to the card object type
 	switch (cardNumber)
 	{
 	case 1:
 		pCard = new CardOne(cardPosition);
+		break;
+	case 2:
+		pCard = new Card2(cardPosition);
 		break;
 	case 3:
 		pCard = new Card3(cardPosition);
@@ -86,7 +95,7 @@ void AddCardAction::Execute()
 		// A- Add the remaining cases
 
 	}
-
+	
 	// 3- if pCard is correctly set in the switch case (i.e. if pCard is pointing to an object -- NOT NULL)
 	if (pCard)
 	{
