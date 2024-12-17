@@ -1,4 +1,5 @@
 #include "Snake.h"
+#include "Player.h"
 Snake::Snake(const CellPosition& startCellPos, const CellPosition& endCellPos) : GameObject(startCellPos)
 {
 	///DONE: Do the needed validation
@@ -39,6 +40,11 @@ void Snake::Apply(Grid* pGrid, Player* pPlayer)
 
 	pGrid->PrintErrorMessage("You have reached a snake. Click to continue ...");
 	pGrid->UpdatePlayerCell(pPlayer, endCellPos);
+	GameObject* existingLadder_or_Snake_or_Card = (pPlayer->GetCell())->GetGameObject();
+	if ((pPlayer->GetCell())->GetGameObject()) // checks if the cell has a ladder or snake or card, if it points to null don't call apply()
+		existingLadder_or_Snake_or_Card->Apply(pGrid, pPlayer);
+
+
 
 }
 

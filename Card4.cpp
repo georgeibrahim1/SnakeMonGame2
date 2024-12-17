@@ -27,6 +27,10 @@ void Card4::Apply(Grid* pGrid, Player* pPlayer)
 	if (pSnake) // if there exists a snake ahead
 	{
 		pGrid->UpdatePlayerCell(pPlayer, pSnake->GetPosition());
+		GameObject* existingLadder_or_Snake_or_Card = (pPlayer->GetCell())->GetGameObject();
+		if ((pPlayer->GetCell())->GetGameObject()) // checks if the cell has a ladder or snake or card, if it points to null don't call apply()
+			existingLadder_or_Snake_or_Card->Apply(pGrid, pPlayer);
+		
 	}
 	else
 		pGrid->PrintErrorMessage("No Snakes Ahead, Click to continue ......");

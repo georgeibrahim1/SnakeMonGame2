@@ -14,7 +14,7 @@ void NewGameAction::ReadActionParameters()
  void NewGameAction::Execute()
 {
 	 Grid* pGrid = pManager->GetGrid();
-
+	 pGrid->SetEndGame(0); //indicating a new game
 	 pGrid->ResetGame();
 
 }
