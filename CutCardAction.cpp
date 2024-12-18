@@ -31,7 +31,12 @@ void CutCardAction::Execute()
 	ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid(); // We get a pointer to the Grid from the ApplicationManager
 
-	if (pGrid->HasCard(SourceCell)) // Check if the cell has a card
+	if (!(SourceCell.IsValidCell())) // to check if the cell clicked is valid
+	{
+		pGrid->PrintErrorMessage("you didn't click anywhere on the grid! Click to continue....");
+	}
+
+	else if (pGrid->HasCard(SourceCell)) // Check if the cell has a card
 	{
 		Card* pCard = pGrid->HasCard(SourceCell);
 		pGrid->SetClipboard(pCard); 	// Copy Card to Clipboard
