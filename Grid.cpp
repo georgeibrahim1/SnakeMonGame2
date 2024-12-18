@@ -82,13 +82,14 @@ void Grid::UpdatePlayerCell(Player * player, const CellPosition & newPosition)
 {
 	// Clear the player's circle from the old cell position
 	player->ClearDrawing(pOut);
-
+	
 	// Set the player's CELL with the new position
 	Cell * newCell = CellList[newPosition.VCell()][newPosition.HCell()];
 	player->SetCell(newCell);	
-
+	
 	// Draw the player's circle on the new cell position
 	player->Draw(pOut);
+
 }
 
 
@@ -267,6 +268,7 @@ Card* Grid::HasCard(CellPosition pos)  // by team, check for class responsibilit
 
 void Grid::ResetGame()
 {
+	endGame = 0;
 	for (int i = 0; i < MaxPlayerCount; i++)
 	{
 		Player* pPlayer = PlayerList[i];
