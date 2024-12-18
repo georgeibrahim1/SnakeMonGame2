@@ -48,6 +48,17 @@ void Snake::Apply(Grid* pGrid, Player* pPlayer)
 
 }
 
+void Snake::Save(ofstream& OutFile, Type fromout)
+{
+	if (fromout == 1)
+	{
+		OutFile << position.GetCellNum() << " " << endCellPos.GetCellNum();
+	}
+	else
+		return;
+}
+
+
 bool Snake::IsOverlapping(GameObject* newObj) const
 {
 	Snake* otherSnake = dynamic_cast<Snake*>(newObj);
