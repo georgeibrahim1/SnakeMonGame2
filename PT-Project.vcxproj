@@ -137,6 +137,8 @@
     <ClCompile Include="Card2.cpp" />
     <ClCompile Include="Card3.cpp" />
     <ClCompile Include="Card4.cpp" />
+    <ClCompile Include="Card7.cpp" />
+    <ClCompile Include="Card8.cpp" />
     <ClCompile Include="CardOne.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CellPosition.cpp" />
@@ -206,6 +208,8 @@
     <ClInclude Include="Card2.h" />
     <ClInclude Include="Card3.h" />
     <ClInclude Include="Card4.h" />
+    <ClInclude Include="Card7.h" />
+    <ClInclude Include="Card8.h" />
     <ClInclude Include="CardOne.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellPosition.h" />
@@ -244,11 +248,15 @@
     <ClInclude Include="Output.h" />
     <ClInclude Include="PasteCardAction.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="RollDiceAction.h" />
     <ClInclude Include="SaveGridAction.h" />
     <ClInclude Include="Snake.h" />
     <ClInclude Include="SwitchToPlayMode.h" />
     <ClInclude Include="UI_Info.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="PT Project.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

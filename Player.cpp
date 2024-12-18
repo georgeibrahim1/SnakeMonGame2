@@ -46,7 +46,7 @@ int Player::GetTurnCount() const
 
 void Player::ResetTurnCount() 
 {
-		turnCount == 0;	
+		turnCount == 0;	 
 }
 
 void Player::ResetStepCount()

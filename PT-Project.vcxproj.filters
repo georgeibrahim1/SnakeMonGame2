@@ -223,11 +223,13 @@
     <ClCompile Include="Card4.cpp">
       <Filter>GameObjects\Cards</Filter>
     </ClCompile>
-    <ClCompile Include="NewGameAction.cpp">
-      <Filter>Actions</Filter>
+    <ClCompile Include="NewGameAction.cpp" />
+    <ClCompile Include="SwitchToPlayMode.cpp" />
+    <ClCompile Include="Card7.cpp">
+      <Filter>GameObjects\Cards</Filter>
     </ClCompile>
-    <ClCompile Include="SwitchToPlayMode.cpp">
-      <Filter>Actions</Filter>
+    <ClCompile Include="Card8.cpp">
+      <Filter>GameObjects\Cards</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -379,11 +381,17 @@
     <ClInclude Include="Card4.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
-    <ClInclude Include="NewGameAction.h">
-      <Filter>Actions</Filter>
+    <ClInclude Include="NewGameAction.h" />
+    <ClInclude Include="SwitchToPlayMode.h" />
+    <ClInclude Include="Card7.h">
+      <Filter>GameObjects\Cards</Filter>
     </ClInclude>
-    <ClInclude Include="SwitchToPlayMode.h">
-      <Filter>Actions</Filter>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Card8.h">
+      <Filter>GameObjects\Cards</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="PT Project.rc" />
   </ItemGroup>
 </Project>
