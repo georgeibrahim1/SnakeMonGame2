@@ -95,7 +95,9 @@ void AddLadderAction::Execute()
 	}
 	/*GameObject* cardobject = cardobject->GetCopy();
 	Card* Cardobject = dynamic_cast<Card*>(cardobject);*/
-	if (pGrid->HasObject(endPos))
+	GameObject* isCard = pGrid->GetObj(endPos);
+	Card* HasCard = dynamic_cast<Card*>(isCard);
+	if (pGrid->HasObject(endPos) && !HasCard)
 	{
 		pGrid->PrintErrorMessage("End Cell cannot be the start of another ladder or snake");//This error occurs when Top of New Ladder is with Bottom of Old Ladder or with Head of Snake
 		return;

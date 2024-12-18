@@ -91,7 +91,7 @@ public:
 									    // We added this function once here because it is used many times by other classes
 	bool Grid::HasObject(CellPosition pos); // returns 1 if cell has an object, returns 0 if not. (added by team)
 	Card* Grid::HasCard(CellPosition pos); // returns 1 if cell has an object, returns 0 if not. (added by team)
-
+	GameObject* Grid::GetObj(CellPosition pos);// added by team a gameobject getter
 	bool IsOverlapping(GameObject* newObj) const;
 
 	void ResetGame();

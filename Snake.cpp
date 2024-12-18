@@ -74,10 +74,7 @@ bool Snake::IsOverlapping(GameObject* newObj) const
 			return true;
 			}
 		}
-		else
-		{
-			return false;
-		}
+		return false;
 }
 
 CellPosition Snake::GetEndPosition() const
