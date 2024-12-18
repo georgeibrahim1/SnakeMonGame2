@@ -285,6 +285,74 @@ void Grid::ResetGame()
 	SetCurrentPlayer(0);
 }
 
+int Grid::getNumOfObjects(Type Object) //I will change it till all cards are done
+{
+	int NumofObject = 0;
+
+	if (Object == 0)
+	{
+		for (int v = 0; v < NumVerticalCells; ++v)
+		{
+			for (int h = 0; h < NumHorizontalCells; ++h)
+			{
+				if (CellList[v][h]->HasLadder())
+				{
+					NumofObject++;
+					
+				}
+			}
+		}
+	}
+	else if (Object == 1)
+	{
+		for (int v = 0; v < NumVerticalCells; ++v)
+		{
+			for (int h = 0; h < NumHorizontalCells; ++h)
+			{
+				if (CellList[v][h]->HasSnake())
+				{
+					NumofObject++;
+
+				}
+			}
+		}
+	}
+	else
+	{
+		for (int v = 0; v < NumVerticalCells; ++v)
+		{
+			for (int h = 0; h < NumHorizontalCells; ++h)
+			{
+				if (CellList[v][h]->HasCard())
+				{
+					NumofObject++;
+
+				}
+			}
+		}
+	}
+
+	return NumofObject;
+}
+
+void Grid::SaveAll(ofstream& OutFile, Type fromout)
+{
+	OutFile << getNumOfObjects(fromout) << endl; 
+
+	for (int v = 0; v < NumVerticalCells; ++v) 
+	{
+		for (int h = 0; h < NumHorizontalCells; ++h) 
+		{
+			if (HasObject(CellList[v][h]->GetCellPosition()))
+			{
+				GameObject * existingObject = CellList[v][h]->GetGameObject();
+				existingObject->Save(OutFile , fromout);
+			}
+		}
+	}
+}
+
+
 
 Grid::~Grid()
 {
