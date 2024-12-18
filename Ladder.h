@@ -19,6 +19,8 @@ public:
 	CellPosition GetEndPosition() const; // A getter for the endCellPos data member
 
 	virtual bool IsOverlapping(GameObject* newObj) const;  
+        virtual void Save(ofstream& OutFile , Type);
+
 
 	virtual ~Ladder(); // Virtual destructor
 };
