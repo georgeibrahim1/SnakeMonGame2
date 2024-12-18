@@ -264,6 +264,13 @@ Card* Grid::HasCard(CellPosition pos)  // by team, check for class responsibilit
 		return NULL;
 
 }
+GameObject* Grid::GetObj(CellPosition pos) // added by team a gameobject getter
+{
+	if (pos.IsValidCell()) // Check if valid position
+		return CellList[pos.VCell()][pos.HCell()]->GetGameObject();
+	else
+		return NULL;
+}
 
 void Grid::ResetGame()
 {

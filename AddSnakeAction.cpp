@@ -2,6 +2,7 @@
 #include "Input.h"
 #include "Output.h"
 #include "Snake.h"
+#include "Card.h"
 #include <iostream>
 #include <chrono>
 #include <thread>
@@ -77,7 +78,9 @@ void AddSnakeAction::Execute()
 		pGrid->PrintErrorMessage("Start Cell & End Cell must be in the same column!");
 		return;
 	}
-	if (pGrid->HasObject(endPos))
+	GameObject* isCard = pGrid->GetObj(endPos);
+	Card* HasCard = dynamic_cast<Card*>(isCard);
+	if (pGrid->HasObject(endPos) && !HasCard)
 	{
 		pGrid->PrintErrorMessage("End Cell cannot be the start of another ladder or snake");//This error occurs when Tail of New Snake is with Head of Old Snake or Bottom of Ladder
 		return;
