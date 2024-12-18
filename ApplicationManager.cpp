@@ -12,7 +12,7 @@
 #include "NewGameAction.h"
 #include "SwitchToPlayMode.h"
 #include "SaveGridAction.h"
-
+#include "SwitchToDesignMode.h"
 #include "RollDiceAction.h"
 #include "InputDiceValueAction.h"
 
@@ -131,7 +131,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case TO_DESIGN_MODE:
-		pOut->CreateDesignModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
+		// create an object of RollDiceAction here
+		pAct = new SwitchToDesignMode(this);
 		break;
 
 		

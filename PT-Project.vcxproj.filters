@@ -231,6 +231,12 @@
     <ClCompile Include="Card8.cpp">
       <Filter>GameObjects\Cards</Filter>
     </ClCompile>
+    <ClCompile Include="SwitchToDesignMode.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="Card9.cpp">
+      <Filter>GameObjects\Cards</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -388,6 +394,12 @@
     </ClInclude>
     <ClInclude Include="resource.h" />
     <ClInclude Include="Card8.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchToDesignMode.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="Card9.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
   </ItemGroup>

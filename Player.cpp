@@ -46,12 +46,17 @@ int Player::GetTurnCount() const
 
 void Player::ResetTurnCount() 
 {
-		turnCount == 0;	 
+		turnCount = 0;	
 }
 
 void Player::ResetStepCount()
 {
-	stepCount == 0;
+	stepCount = 0;
+}
+
+int Player::GetPlayerNum() const
+{
+	return playerNum;
 }
 
 // ====== Drawing Functions ======
@@ -115,31 +120,56 @@ void Player::Move(Grid * pGrid, int diceNumber)
 	// 7- Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
 
 	++turnCount; 
-	++stepCount;
 	justRolledDiceNum = diceNumber;
 
 	if (turnCount == 3)
 	{
-		wallet += 50; //temporary number
+		wallet += 10*diceNumber;
 		turnCount = 0; 
+		pGrid->PrintErrorMessage("Wallet Recharge Turn: Player " + to_string(playerNum) + " gained " + to_string(10 * diceNumber) +  " and didn't move " +" , Click to continue");
+		return;
+	}
+
+	if (wallet == 0)
+	{
+		pGrid->PrintErrorMessage("Player" + to_string(playerNum) +"'s wallet is zero, so he can't move ...." + ", Click to continue ");
 		return;
 	}
 
 	CellPosition pos = pCell->GetCellPosition();
 
-	pos.AddCellNum(diceNumber);
+	if (pos.GetCellNum() >= 93)
+	{
+		if ((pos.GetCellNum() + diceNumber ) >= 99)
+		{
+			pGrid->SetEndGame(true);
+			CellPosition FinalCell(0 , 10); 
+			pGrid->UpdatePlayerCell(this, FinalCell);
+			stepCount = 98;
+			pGrid->PrintErrorMessage("PLAYER" + to_string(playerNum) +" IS THE WINNER!!!!" + " , Click anywhere to continue...");
+			return;
+		}
+		else
+		{
+			pos.AddCellNum(diceNumber);
+			pGrid->UpdatePlayerCell(this, pos);
+			stepCount += diceNumber;
+			GameObject* existingLadder_or_Snake_or_Card = pCell->GetGameObject();
+			if (pCell->GetGameObject()) // checks if the cell has a ladder or snake or card, if it points to null don't call apply()
+				existingLadder_or_Snake_or_Card->Apply(pGrid, this);
+		}
 
-	pGrid->UpdatePlayerCell(this, pos);
 
-	GameObject * existingLadder_or_Snake_or_Card = pCell->GetGameObject();
-	if(pCell->GetGameObject()) // checks if the cell has a ladder or snake or card, if it points to null don't call apply()
-		existingLadder_or_Snake_or_Card->Apply(pGrid, this);
-
-
-	if (pos.GetCellNum() == 99) {
-		pGrid->SetEndGame(true);
 	}
-
+	else
+	{
+		pos.AddCellNum(diceNumber);
+		pGrid->UpdatePlayerCell(this, pos);
+		stepCount += diceNumber;
+		GameObject* existingLadder_or_Snake_or_Card = pCell->GetGameObject();
+		if (pCell->GetGameObject()) // checks if the cell has a ladder or snake or card, if it points to null don't call apply()
+			existingLadder_or_Snake_or_Card->Apply(pGrid, this);
+	}
 
 }
 
