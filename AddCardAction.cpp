@@ -6,7 +6,7 @@
 #include "Card2.h"
 #include "Card3.h"
 #include "Card4.h"
-
+#include "Card9.h"
 
 #include <iostream>
 #include <chrono>
@@ -96,7 +96,9 @@ void AddCardAction::Execute()
 	case 4:
 		pCard = new Card4(cardPosition);
 		break;
-
+	case 9:
+		pCard = new Card9(cardPosition);
+		break;
 		// A- Add the remaining cases
 
 	}
