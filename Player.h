@@ -33,6 +33,7 @@ public:
 	int GetPlayerNum() const;
 	void ResetTurnCount();
 	void ResetStepCount();
+	int getJustRolledDice() const;
 
 	///TODO: You can add setters and getters for data members here (if needed)
 

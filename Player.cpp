@@ -173,6 +173,10 @@ void Player::Move(Grid * pGrid, int diceNumber)
 
 }
 
+int Player::getJustRolledDice()const {
+	return justRolledDiceNum;
+}
+
 void Player::AppendPlayerInfo(string & playersInfo) const
 {
 	playersInfo += "P" + to_string(playerNum) + "(" ;
