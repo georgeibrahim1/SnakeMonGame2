@@ -16,6 +16,8 @@ public:
 
 	virtual bool IsOverlapping(GameObject* newObj) const;
 
+	virtual void Save(ofstream& OutFile, Type);
+
 	virtual ~Snake(); // Virtual destructor
 };
 
