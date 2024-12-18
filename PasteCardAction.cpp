@@ -26,12 +26,18 @@ void PasteCardAction::Execute()
 {
 	// The first line of any Action Execution is to read its parameter first 
 	// and hence initializes its data members
-	PasteCardAction :: ReadActionParameters();
+	PasteCardAction::ReadActionParameters();
 	Grid* pGrid = pManager->GetGrid(); // We get a pointer to the Grid from the ApplicationManager
-	Card* pCard = NULL;
-	bool added = 0; // to check if the card was added
+	if (!(DestinationCell.IsValidCell())) // to check if the cell clicked is valid
+	{
+		pGrid->PrintErrorMessage("You didn't click anywhere on the grid! Click to continue....");
+	}
+	else
+	{
+		Card* pCard = NULL;
+		bool added = 0; // to check if the card was added
 		pCard = pGrid->GetClipboard(); // gets the Card pointer from clipboard
-		if (pCard) 
+		if (pCard)
 		{
 			pCard->SetPosition(DestinationCell);
 			added = pGrid->AddObjectToCell(pCard); // pastes the card to the desired cell
@@ -40,9 +46,9 @@ void PasteCardAction::Execute()
 		}
 		else
 			pGrid->PrintErrorMessage("Error: Clipboard is empty ! Click to continue ...");
-	
-		
-	
+
+
+	}
 
 
 

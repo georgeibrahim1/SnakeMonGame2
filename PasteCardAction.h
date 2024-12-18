@@ -4,9 +4,9 @@ class PasteCardAction : public Action
 {
 	CellPosition DestinationCell;
 public:
-	PasteCardAction(ApplicationManager* pApp);
-	virtual void ReadActionParameters();
+	PasteCardAction(ApplicationManager* pApp); // A Constructor
+	virtual void ReadActionParameters(); 
 	virtual void Execute();
-	virtual ~PasteCardAction();
+	virtual ~PasteCardAction(); // Virtual Destructor
 };
 

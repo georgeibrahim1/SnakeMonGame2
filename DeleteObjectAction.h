@@ -6,10 +6,10 @@ class DeleteObjectAction : public Action
 
 
 public:
-	DeleteObjectAction(ApplicationManager* pApp);
-	virtual void ReadActionParameters();
+	DeleteObjectAction(ApplicationManager* pApp); // A Constructor
+	virtual void ReadActionParameters(); 
 	virtual void Execute();
-	virtual ~DeleteObjectAction();
+	virtual ~DeleteObjectAction();// Virtual Destructor
 
 };
 

@@ -37,12 +37,11 @@ void DeleteObjectAction::Execute()
 
 	if (!(Pos.IsValidCell())) // to check if the cell clicked is valid
 	{
-		pGrid->PrintErrorMessage("you didn't click anywhere on the grid! Click to continue....");
-		return;
+		pGrid->PrintErrorMessage("You didn't click anywhere on the grid! Click to continue....");
 	}
 
 
-	if (pGrid->HasObject(Pos))
+	else if (pGrid->HasObject(Pos))
 	{
 		// remove the GameObject of its Cell:
 		pGrid->RemoveObjectFromCell(Pos);
