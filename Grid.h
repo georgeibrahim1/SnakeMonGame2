@@ -46,7 +46,8 @@ public:
 	void RemoveObjectFromCell(const CellPosition & pos); // Removes the GameObject of the Cell of the passed "position"
 
 	void UpdatePlayerCell(Player * player, const CellPosition & newPosition); // Update the player's pCell with the CellList's Cell pointer of the "newPosition",
-	                                                                          // Clears the player's circle from the previous cell
+	int getNumOfObjects(Type Object);
+	void SaveAll(ofstream& OutFile, Type fromout);                                                                          // Clears the player's circle from the previous cell
 	    																	  // and  Draws it in the new cell
 
 	// ========= Setters and Getters Functions =========
