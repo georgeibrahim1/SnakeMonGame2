@@ -13,9 +13,8 @@ Card5::~Card5(void)
 void Card5::Apply(Grid* pGrid, Player* pPlayer)
 {
 
-
 	Card::Apply(pGrid, pPlayer);
-
-	
+    int lastRoll = pPlayer->getJustRolledDice();
+	pPlayer->Move(pGrid , lastRoll);
 	
 }
