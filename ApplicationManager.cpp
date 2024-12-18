@@ -10,7 +10,7 @@
 #include "PasteCardAction.h"
 #include "NewGameAction.h"
 #include "SwitchToPlayMode.h"
-
+#include "SaveGridAction.h"
 
 #include "RollDiceAction.h"
 #include "InputDiceValueAction.h"
@@ -103,7 +103,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		// create an object of NewGameAction here
 		pAct = new NewGameAction(this);
 		break;
-
+		
+	case SAVE_GRID:
+		// create an object of InputDiceValueAction here
+		pAct = new SaveGridAction(this);
+		break;
+		
 	case EXIT:
 		break;
 
