@@ -5,9 +5,9 @@ class CutCardAction : public Action
 	CellPosition SourceCell;
 
 public:
-	CutCardAction(ApplicationManager *pApp);
-	virtual void ReadActionParameters();
+	CutCardAction(ApplicationManager *pApp); // A Constructor
+	virtual void ReadActionParameters(); 
 	virtual void Execute();
-	virtual ~CutCardAction();
+	virtual ~CutCardAction(); // Virtual Destructor
 };
 

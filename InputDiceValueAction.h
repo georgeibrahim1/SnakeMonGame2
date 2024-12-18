@@ -11,6 +11,6 @@ public:
 
 	virtual void Execute();
 
-	virtual ~InputDiceValueAction();
+	virtual ~InputDiceValueAction(); 
 };
 

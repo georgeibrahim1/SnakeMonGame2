@@ -5,10 +5,10 @@ class CopyCardAction : public Action
 	CellPosition SourceCell;
 
 public:
-	CopyCardAction(ApplicationManager* pApp);
-	virtual void ReadActionParameters();
+	CopyCardAction(ApplicationManager* pApp); // A Constructor
+	virtual void ReadActionParameters(); 
 	virtual void Execute();
-	virtual ~CopyCardAction();
+	virtual ~CopyCardAction(); // Virtual Destructor
 };
 
 
