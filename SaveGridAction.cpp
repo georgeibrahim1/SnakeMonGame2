@@ -4,7 +4,7 @@
 #include "Output.h"
 #include <fstream>
 #include <iostream>
-
+/*
 SaveGridAction::SaveGridAction(ApplicationManager* pApp) : Action(pApp)
 {
 	fileName = " ";
@@ -33,9 +33,9 @@ void SaveGridAction::Execute()
 
 	if (file.is_open()) {
 		
-		pGrid->SaveAll(file , 0);
-		pGrid->SaveAll(file, 1);
-		pGrid->SaveAll(file, 3); //till the rest cards would be added
+		//pGrid->SaveAll(file , Ladder_enum);
+		//pGrid->SaveAll(file, Snake_enum);
+		//pGrid->SaveAll(file, Card_enum); //till the rest cards would be added
 		pOut->PrintMessage(fileName + ".txt is saved");
 
 		file.close();
@@ -53,3 +53,4 @@ SaveGridAction::~SaveGridAction()
 {
 
 }
+/*/

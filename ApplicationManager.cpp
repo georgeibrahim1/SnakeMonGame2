@@ -104,10 +104,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new NewGameAction(this);
 		break;
 		
-	case SAVE_GRID:
+	//case SAVE_GRID:
 		// create an object of InputDiceValueAction here
-		pAct = new SaveGridAction(this);
-		break;
+		//pAct = new SaveGridAction(this);
+		//break;
 		
 	case EXIT:
 		break;

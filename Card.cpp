@@ -49,7 +49,12 @@ GameObject* Card::GetCopy()
 	
 	return cardobj;
 }*/
+/*
+void Save(ofstream& OutFile, ObjType)
+{
 
+}
+*/
 Card::~Card()
 {
 }

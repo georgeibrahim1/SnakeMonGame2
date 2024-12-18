@@ -30,6 +30,7 @@ private:
 	// in the passed cellpos
 
 	void ClearToolBar() const;	// Clears the toolbar by drawing a filled rectangle
+	void ClearPlayerInfo() const;	// Clears the toolbar by drawing a filled rectangle
 
 public:
 

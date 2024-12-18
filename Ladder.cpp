@@ -63,16 +63,17 @@ bool Ladder::IsOverlapping(GameObject* newObj) const
 		}
 		return false;		
 }
-
-void Ladder::Save(ofstream& OutFile , Type fromout)
+/*
+void Ladder::Save(ofstream& OutFile , ObjType fromout)
 {
-	if (fromout == 0)
+	if (fromout == Ladder_enum)
 	{
 		OutFile << position.GetCellNum() << " " << endCellPos.GetCellNum() ;
 	}
 	else
 		return;
 }
+*/
 
 CellPosition Ladder::GetEndPosition() const
 {

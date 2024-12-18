@@ -47,16 +47,17 @@ void Snake::Apply(Grid* pGrid, Player* pPlayer)
 
 
 }
-
-void Snake::Save(ofstream& OutFile, Type fromout)
+/*
+void Snake::Save(ofstream& OutFile, ObjType fromout)
 {
-	if (fromout == 1)
+	if (fromout == Snake_enum)
 	{
 		OutFile << position.GetCellNum() << " " << endCellPos.GetCellNum();
 	}
 	else
 		return;
 }
+*/
 
 
 bool Snake::IsOverlapping(GameObject* newObj) const

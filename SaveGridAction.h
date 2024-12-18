@@ -1,5 +1,6 @@
 #pragma once
 #include "Action.h"
+/*
 class SaveGridAction : public Action
 {
 private:
@@ -12,3 +13,4 @@ public:
 	virtual void Execute();
 	virtual ~SaveGridAction();
 };
+/*/

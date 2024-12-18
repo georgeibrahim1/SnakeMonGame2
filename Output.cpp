@@ -150,6 +150,14 @@ void Output::ClearToolBar() const
 	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight);
 }
 
+void Output::ClearPlayerInfo() const
+{
+	// Clear by drawing a rectangle filled with toolbar background color
+	pWind->SetPen(UI.ToolBarColor, 1);
+	pWind->SetBrush(UI.ToolBarColor);
+	pWind->DrawRectangle(UI.width /2, 0, UI.width, UI.ToolBarHeight);
+}
+
 //======================================================================================//
 //								Interface Functions										//
 //======================================================================================//
@@ -268,7 +276,7 @@ void Output::PrintMessage(string msg) const	//Prints a message on status bar
 void Output::PrintPlayersInfo(string info)
 {
 	//Clear what was written on the toolbar
-	//ClearToolBar();
+	ClearPlayerInfo();
 
 	// Set the pen and font before drawing the string on the window
 	pWind->SetPen(UI.PlayerInfoColor);

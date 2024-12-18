@@ -7,6 +7,14 @@
 #include "Output.h"
 #include "CellPosition.h"
 
+/*
+enum ObjType
+{
+	Ladder_enum,
+	Snake_enum,
+	Card_enum
+};
+*/
 // forward declarations (the includes are in the cpp)
 class Cell;
 class GameObject;
@@ -46,8 +54,8 @@ public:
 	void RemoveObjectFromCell(const CellPosition & pos); // Removes the GameObject of the Cell of the passed "position"
 
 	void UpdatePlayerCell(Player * player, const CellPosition & newPosition); // Update the player's pCell with the CellList's Cell pointer of the "newPosition",
-	int getNumOfObjects(Type Object);
-	void SaveAll(ofstream& OutFile, Type fromout);                                                                          // Clears the player's circle from the previous cell
+	//int getNumOfObjects(ObjType Object);
+	//void SaveAll(ofstream& OutFile, ObjType fromout);                                                                          // Clears the player's circle from the previous cell
 	    																	  // and  Draws it in the new cell
 
 	// ========= Setters and Getters Functions =========

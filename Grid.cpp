@@ -284,12 +284,12 @@ void Grid::ResetGame()
 
 	SetCurrentPlayer(0);
 }
-
-int Grid::getNumOfObjects(Type Object) //I will change it till all cards are done
+/*
+int Grid::getNumOfObjects(ObjType Object) //I will change it till all cards are done
 {
 	int NumofObject = 0;
 
-	if (Object == 0)
+	if (Object == Ladder_enum)
 	{
 		for (int v = 0; v < NumVerticalCells; ++v)
 		{
@@ -303,7 +303,7 @@ int Grid::getNumOfObjects(Type Object) //I will change it till all cards are don
 			}
 		}
 	}
-	else if (Object == 1)
+	else if (Object == Snake_enum)
 	{
 		for (int v = 0; v < NumVerticalCells; ++v)
 		{
@@ -335,7 +335,7 @@ int Grid::getNumOfObjects(Type Object) //I will change it till all cards are don
 	return NumofObject;
 }
 
-void Grid::SaveAll(ofstream& OutFile, Type fromout)
+void Grid::SaveAll(ofstream& OutFile, ObjType fromout)
 {
 	OutFile << getNumOfObjects(fromout) << endl; 
 
@@ -352,7 +352,7 @@ void Grid::SaveAll(ofstream& OutFile, Type fromout)
 	}
 }
 
-
+*/
 
 Grid::~Grid()
 {
