@@ -30,7 +30,7 @@ void PasteCardAction::Execute()
 	Grid* pGrid = pManager->GetGrid(); // We get a pointer to the Grid from the ApplicationManager
 	if (!(DestinationCell.IsValidCell())) // to check if the cell clicked is valid
 	{
-		pGrid->PrintErrorMessage("you didn't click anywhere on the grid! Click to continue....");
+		pGrid->PrintErrorMessage("You didn't click anywhere on the grid! Click to continue....");
 	}
 	else
 	{

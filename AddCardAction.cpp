@@ -73,7 +73,7 @@ void AddCardAction::Execute()
 	Grid* pGrid = pManager->GetGrid();
 	if (!(cardPosition.IsValidCell())) // to check if the cell clicked is valid
 	{
-		pGrid->PrintErrorMessage("you didn't click anywhere on the grid! Click to continue....");
+		pGrid->PrintErrorMessage("You didn't click anywhere on the grid! Click to continue....");
 		return;
 	}
 	if (pGrid->HasObject(cardPosition))

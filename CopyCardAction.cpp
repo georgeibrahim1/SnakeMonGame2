@@ -33,7 +33,7 @@ void CopyCardAction::Execute()
 	Grid* pGrid = pManager->GetGrid(); // We get a pointer to the Grid from the ApplicationManager
 	if (!(SourceCell.IsValidCell())) // to check if the cell clicked is valid
 	{
-		pGrid->PrintErrorMessage("you didn't click anywhere on the grid! Click to continue....");
+		pGrid->PrintErrorMessage("You didn't click anywhere on the grid! Click to continue....");
 		
 	}
 
