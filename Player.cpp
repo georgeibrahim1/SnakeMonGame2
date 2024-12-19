@@ -27,11 +27,12 @@ Cell* Player::GetCell() const
 
 void Player::SetWallet(int wallet)
 {
-	if (wallet >= 0  && wallet <= 100) {
+	if (wallet >= 0)
+	{
 		this->wallet = wallet;
 	}
 	else
-		return;
+		wallet = 0;
 }
 
 int Player::GetWallet() const

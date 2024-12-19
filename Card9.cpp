@@ -33,5 +33,10 @@ void Card9::Apply(Grid* pGrid, Player* pPlayer)
 	Card::Apply(pGrid, pPlayer);
 	CellPosition movetocell = CellPosition::GetCellPositionFromNum(cellnum);
 	pGrid->UpdatePlayerCell(pPlayer, movetocell);
+	GameObject* existingLadder_or_Snake_or_Card = (pPlayer->GetCell())->GetGameObject();
+	if ((pPlayer->GetCell())->GetGameObject()) // checks if the cell has a ladder or snake or card, if it points to null don't call apply()
+		existingLadder_or_Snake_or_Card->Apply(pGrid, pPlayer);
+
+
 }
 
