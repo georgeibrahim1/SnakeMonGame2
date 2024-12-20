@@ -20,8 +20,7 @@ void Card7::Apply(Grid* pGrid, Player* pPlayer)
 	// Generate a random number from 1 to 6 
 	srand((int)time(NULL)); // time seed
 	int diceNumber = 1 + rand() % 6; // from 1 to 6 
-
+	pPlayer->SetAnotherRoll(1);
 	pPlayer->Move(pGrid, diceNumber);
-
 	
 }

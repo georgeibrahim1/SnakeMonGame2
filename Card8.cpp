@@ -15,6 +15,7 @@ void Card8::Apply(Grid* pGrid, Player* pPlayer)
 
 	Card::Apply(pGrid, pPlayer); // call apply of the base class Card
 
-
+	pPlayer->SetToSkip(1); // Indicating that the player will skip next turn
+	pGrid->PrintErrorMessage("You will skip next turn. Click to continue ......");
 
 }

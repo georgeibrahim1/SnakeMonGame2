@@ -2,7 +2,7 @@
 
 Card6::Card6(const CellPosition& pos) : Card(pos) // set the cell position of the card
 {
-	cardNumber = 5; // set the inherited cardNumber data member with the card number (4 here)
+	cardNumber = 6; // set the inherited cardNumber data member with the card number (4 here)
 }
 
 Card6::~Card6(void)

@@ -2,7 +2,7 @@
 
 #include "GameObject.h"
 
-Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerNum(playerNum) , turnCount(0)
+Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerNum(playerNum) , turnCount(0), ToSkip(0) , AnotherRoll(0)
 {
 	if (pCell)
 		this->pCell = pCell;
@@ -58,6 +58,26 @@ void Player::ResetStepCount()
 int Player::GetPlayerNum() const
 {
 	return playerNum;
+}
+void Player::SetToSkip(bool S)
+{
+	ToSkip = S;
+}
+
+
+bool Player::GetToSkip() const
+{
+	return ToSkip;
+}
+void Player::SetAnotherRoll(bool S)
+{
+	AnotherRoll = S;
+}
+
+
+bool Player::GetAnotherRoll() const
+{
+	return AnotherRoll;
 }
 
 // ====== Drawing Functions ======
@@ -120,8 +140,26 @@ void Player::Move(Grid * pGrid, int diceNumber)
 
 	// 7- Check if the player reached the end cell of the whole game, and if yes, Set end game with true: pGrid->SetEndGame(true)
 
+	
+
+
 	++turnCount; 
 	justRolledDiceNum = diceNumber;
+
+	if (this->GetAnotherRoll()) // indicating that the player will get another roll (without affecting the turncount)
+	{
+		--turnCount;
+		this->SetAnotherRoll(0); // Another roll back to zero
+	}
+
+	if (this->GetToSkip()) // indicating that the player will skip this round
+	{
+		pGrid->PrintErrorMessage("you are denied from playing this turn.Click to continue");
+
+		this->SetToSkip(0); // player will be able to play normally in the next round
+
+		return;
+	}
 
 	if (turnCount == 3)
 	{

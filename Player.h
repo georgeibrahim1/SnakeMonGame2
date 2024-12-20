@@ -16,7 +16,8 @@ class Player
 	int turnCount;         // a counter that starts with 0, is incremented with each dice roll
 	                       // and reset again when reached 3
 	                       // it is used to indicate when to move and when to add to your wallet
-	
+	bool ToSkip; // added by team. used in card 8, indicates that this player should not roll in his next turn
+	bool AnotherRoll; // added by team. used in card 7, indicates that this player gets another roll
 public:
 
 	Player(Cell * pCell, int playerNum); // Constructor making any needed initializations
@@ -34,7 +35,10 @@ public:
 	void ResetTurnCount();
 	void ResetStepCount();
 	int getJustRolledDice() const;
-
+	void SetToSkip(bool S); // A setter for ToSkip
+	bool GetToSkip() const; // A getter for ToSkip
+	void SetAnotherRoll(bool S); // A setter for AnotherRoll
+	bool GetAnotherRoll() const; // A getter for AnotherRoll
 	///TODO: You can add setters and getters for data members here (if needed)
 
 	// ====== Drawing Functions ======
