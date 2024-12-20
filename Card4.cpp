@@ -35,3 +35,21 @@ void Card4::Apply(Grid* pGrid, Player* pPlayer)
 	else
 		pGrid->PrintErrorMessage("No Snakes Ahead, Click to continue ......");
 }
+
+void Card4::Save(ofstream& OutFile, int Obj)
+{
+	if (Obj == 4)
+	{
+		OutFile << cardNumber << " " << position.GetCellNum() << endl;
+	}
+	else
+		return;
+}
+
+void Card4::Load(ifstream& Infile)
+{
+	int Cellnum;
+	Infile >> Cellnum;
+	position.SetHCell(CellPosition::GetCellPositionFromNum(Cellnum).HCell());
+	position.SetVCell(CellPosition::GetCellPositionFromNum(Cellnum).VCell());
+}

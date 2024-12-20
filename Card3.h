@@ -9,6 +9,10 @@ public:
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of Card3 on the passed Player
 	// Moves the player forward to the start of the next ladder. (If no ladders ahead, nothing)
 
+	virtual void Save(ofstream& OutFile, int);
+	virtual void Load(ifstream& Infile);
+
+
 	virtual ~Card3(); // A Virtual Destructor
 
 };

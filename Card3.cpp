@@ -35,3 +35,21 @@ void Card3::Apply(Grid* pGrid, Player* pPlayer)
 		pGrid->PrintErrorMessage("No ladders Ahead, Click to continue ......");
 }
 
+void Card3::Save(ofstream& OutFile, int Obj)
+{
+	if (Obj == 3)
+	{
+		OutFile << cardNumber << " " << position.GetCellNum() << endl;
+	}
+	else
+		return;
+}
+
+void Card3::Load(ifstream& Infile)
+{
+	int Cellnum;
+	Infile >> Cellnum;
+	position.SetHCell(CellPosition::GetCellPositionFromNum(Cellnum).HCell());
+	position.SetVCell(CellPosition::GetCellPositionFromNum(Cellnum).VCell());
+	
+}

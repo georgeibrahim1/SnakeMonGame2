@@ -1,5 +1,6 @@
 #include "Player.h"
-
+#include "Grid.h"
+#include <fstream>
 #include "GameObject.h"
 
 Player::Player(Cell * pCell, int playerNum) : stepCount(0), wallet(100), playerNum(playerNum) , turnCount(0), ToSkip(0) , AnotherRoll(0)

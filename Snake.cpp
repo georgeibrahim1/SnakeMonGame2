@@ -47,17 +47,26 @@ void Snake::Apply(Grid* pGrid, Player* pPlayer)
 
 
 }
-/*
-void Snake::Save(ofstream& OutFile, ObjType fromout)
+
+void Snake::Save(ofstream& OutFile, int fromout)
 {
-	if (fromout == Snake_enum)
+	if (fromout == -2)
 	{
-		OutFile << position.GetCellNum() << " " << endCellPos.GetCellNum();
+		OutFile << position.GetCellNum() << " " << endCellPos.GetCellNum() << endl;
 	}
 	else
 		return;
 }
-*/
+
+void Snake::Load(ifstream& Infile)
+{
+	int SCellnum, eCellnum; 
+	Infile >> SCellnum >> eCellnum;
+	position.SetHCell(CellPosition::GetCellPositionFromNum(SCellnum).HCell());
+	position.SetVCell(CellPosition::GetCellPositionFromNum(SCellnum).VCell());
+	this->endCellPos.SetHCell(CellPosition::GetCellPositionFromNum(eCellnum).HCell());
+	this->endCellPos.SetVCell(CellPosition::GetCellPositionFromNum(eCellnum).VCell());
+}
 
 
 bool Snake::IsOverlapping(GameObject* newObj) const

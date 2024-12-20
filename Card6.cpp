@@ -32,3 +32,21 @@ void Card6::Apply(Grid* pGrid, Player* pPlayer)
     }
     pGrid->PrintErrorMessage("Card6: You moved backward by " + to_string(lastRoll) + " steps! Click anywhere to continue...");
 }
+
+void Card6::Save(ofstream& OutFile, int Obj)
+{
+    if (Obj == 6)
+    {
+        OutFile << cardNumber << " " << position.GetCellNum() << endl;
+    }
+    else
+        return;
+}
+
+void Card6::Load(ifstream& Infile)
+{
+    int Cellnum;
+    Infile >> Cellnum;
+    position.SetHCell(CellPosition::GetCellPositionFromNum(Cellnum).HCell());
+    position.SetVCell(CellPosition::GetCellPositionFromNum(Cellnum).VCell());
+}

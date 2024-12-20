@@ -64,3 +64,23 @@ void CardOne::Apply(Grid* pGrid, Player* pPlayer)
 	// 2- Decrement the wallet of pPlayer by the walletAmount data member of CardOne
 
 }
+
+void CardOne::Save(ofstream& OutFile, int Obj)
+{
+	if (Obj == 1)
+	{
+		OutFile << cardNumber << " " << position.GetCellNum() << " " << walletAmount << endl;
+	}
+	else
+		return;
+}
+
+void CardOne::Load(ifstream& Infile)
+{
+	int Cellnum , WA;
+	Infile >> Cellnum >> WA;
+	position.SetHCell(CellPosition::GetCellPositionFromNum(Cellnum).HCell());
+	position.SetVCell(CellPosition::GetCellPositionFromNum(Cellnum).VCell());
+	this->walletAmount = WA;
+
+}

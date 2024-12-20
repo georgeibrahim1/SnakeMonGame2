@@ -3,8 +3,8 @@
 #include "Input.h"
 #include "Output.h"
 #include <fstream>
-#include <iostream>
-/*
+#include "GameObject.h"
+
 SaveGridAction::SaveGridAction(ApplicationManager* pApp) : Action(pApp)
 {
 	fileName = " ";
@@ -16,7 +16,7 @@ void SaveGridAction::ReadActionParameters()
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
 
-	pOut->PrintMessage("SaveGrid : Type in the name of the file ....");
+	pGrid->PrintErrorMessage("SaveGrid : Click and Type the name of the file....");
 	fileName = pIn->GetSrting(pOut);
 
 }
@@ -29,22 +29,33 @@ void SaveGridAction::Execute()
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
 
-	ofstream file(fileName + ".txt");
+	file.open(fileName);
 
 	if (file.is_open()) {
-		
-		//pGrid->SaveAll(file , Ladder_enum);
-		//pGrid->SaveAll(file, Snake_enum);
-		//pGrid->SaveAll(file, Card_enum); //till the rest cards would be added
-		pOut->PrintMessage(fileName + ".txt is saved");
+		file << pGrid->getNumOfObjects(-1) << endl;
+		pGrid->SaveAll(file , -1);
+		file << pGrid->getNumOfObjects(-2) << endl;
+		pGrid->SaveAll(file, -2);
+		file << pGrid->getNumOfObjects(1) << endl; //All Cards not only CardOne , Cause It do this operation in ELSE Scope
+		pGrid->SaveAll(file, 1);
+		pGrid->SaveAll(file, 2);
+		pGrid->SaveAll(file, 3);
+		pGrid->SaveAll(file, 4);
+		pGrid->SaveAll(file, 5);
+		pGrid->SaveAll(file, 6);
+		pGrid->SaveAll(file, 7);
+		pGrid->SaveAll(file, 8);
+		pGrid->SaveAll(file, 9);
+		pGrid->SaveAll(file, 10);
+		pGrid->SaveAll(file, 11);
+		pGrid->SaveAll(file, 12);
+		pGrid->SaveAll(file, 13);
+		pGrid->PrintErrorMessage(fileName + ".txt is saved");
 
 		file.close();
 	}
 	else {
-		pOut->PrintMessage("File isn't Open.....");
-		int x, y;
-		pIn->GetPointClicked(x, y);
-		pOut->ClearStatusBar();
+		pGrid->PrintErrorMessage("File isn't Open.....");
 	}
 
 }
@@ -53,4 +64,3 @@ SaveGridAction::~SaveGridAction()
 {
 
 }
-/*/

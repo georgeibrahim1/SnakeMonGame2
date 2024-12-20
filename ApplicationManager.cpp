@@ -15,6 +15,7 @@
 #include "SwitchToDesignMode.h"
 #include "RollDiceAction.h"
 #include "InputDiceValueAction.h"
+#include "LoadGridAction.h"
 
 
 ///TODO: Add #include for all action types
@@ -109,11 +110,15 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new NewGameAction(this);
 		break;
 		
-	//case SAVE_GRID:
+	case SAVE_GRID:
 		// create an object of InputDiceValueAction here
-		//pAct = new SaveGridAction(this);
-		//break;
-		
+		pAct = new SaveGridAction(this);
+		break;
+	case LOAD_GRID:
+		// create an object of InputDiceValueAction here
+		pAct = new LoadGridAction(this);
+		break;
+
 	case EXIT:
 		break;
 

@@ -63,17 +63,27 @@ bool Ladder::IsOverlapping(GameObject* newObj) const
 		}
 		return false;		
 }
-/*
-void Ladder::Save(ofstream& OutFile , ObjType fromout)
+
+void Ladder::Save(ofstream& OutFile , int fromout)
 {
-	if (fromout == Ladder_enum)
+	if (fromout == -1)
 	{
-		OutFile << position.GetCellNum() << " " << endCellPos.GetCellNum() ;
+		OutFile << position.GetCellNum() << " " << endCellPos.GetCellNum() << endl ;
 	}
 	else
 		return;
 }
-*/
+
+void Ladder::Load(ifstream& Infile)
+{
+	int SCellnum, eCellnum;
+	Infile >> SCellnum >> eCellnum;
+	position.SetHCell(CellPosition::GetCellPositionFromNum(SCellnum).HCell());
+	position.SetVCell(CellPosition::GetCellPositionFromNum(SCellnum).VCell());
+	this->endCellPos.SetHCell(CellPosition::GetCellPositionFromNum(eCellnum).HCell());
+	this->endCellPos.SetVCell(CellPosition::GetCellPositionFromNum(eCellnum).VCell());
+}
+
 
 CellPosition Ladder::GetEndPosition() const
 {

@@ -50,6 +50,18 @@ bool Grid::IsOverlapping(GameObject* newObj) const {
 	return false; 
 }
 
+
+void Grid::CleanGrid()
+{
+	for (int i = NumVerticalCells - 1; i >= 0; i--)
+	{
+		for (int j = 0; j < NumHorizontalCells; j++)
+		{
+			RemoveObjectFromCell(CellList[i][j]->GetCellPosition());
+		}
+	}
+}
+
 bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation is needed
 {
 	// Get the cell position of pNewObject
@@ -293,12 +305,12 @@ void Grid::ResetGame()
 
 	SetCurrentPlayer(0);
 }
-/*
-int Grid::getNumOfObjects(ObjType Object) //I will change it till all cards are done
+
+int Grid::getNumOfObjects(int Object)
 {
 	int NumofObject = 0;
 
-	if (Object == Ladder_enum)
+	if (Object == -1)
 	{
 		for (int v = 0; v < NumVerticalCells; ++v)
 		{
@@ -312,7 +324,7 @@ int Grid::getNumOfObjects(ObjType Object) //I will change it till all cards are 
 			}
 		}
 	}
-	else if (Object == Snake_enum)
+	else if (Object == -2)
 	{
 		for (int v = 0; v < NumVerticalCells; ++v)
 		{
@@ -344,10 +356,8 @@ int Grid::getNumOfObjects(ObjType Object) //I will change it till all cards are 
 	return NumofObject;
 }
 
-void Grid::SaveAll(ofstream& OutFile, ObjType fromout)
+void Grid::SaveAll(ofstream& OutFile, int fromout)
 {
-	OutFile << getNumOfObjects(fromout) << endl; 
-
 	for (int v = 0; v < NumVerticalCells; ++v) 
 	{
 		for (int h = 0; h < NumHorizontalCells; ++h) 
@@ -361,7 +371,7 @@ void Grid::SaveAll(ofstream& OutFile, ObjType fromout)
 	}
 }
 
-*/
+
 
 Grid::~Grid()
 {

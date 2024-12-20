@@ -27,8 +27,9 @@ public:
 	                                                   // It is a virtual function (implementation depends on Card Type)
 	//virtual GameObject* GetCopy();
 	//Card* GetCard(Grid* pGrid, const CellPosition& pos);
-    //virtual void Save(ofstream& OutFile, ObjType);
+    virtual void Save(ofstream& OutFile, int);
+	virtual void Load(ifstream& Infile);
+
 
 	virtual ~Card(); // A Virtual Destructor
 };
-

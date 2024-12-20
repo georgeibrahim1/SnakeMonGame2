@@ -101,3 +101,23 @@ void Card13::Apply(Grid* pGrid, Player* pPlayer)
 
 	}
 }
+
+void Card13::Save(ofstream& OutFile, int Obj)
+{
+	if (Obj == 13)
+	{
+		OutFile << cardNumber << " " << position.GetCellNum() << " " << cardprice << " " << Fees << endl;
+	}
+	else
+		return;
+}
+
+void Card13::Load(ifstream& Infile)
+{
+	int Cellnum, CP, F;
+	Infile >> Cellnum >> CP >> F;
+	position.SetHCell(CellPosition::GetCellPositionFromNum(Cellnum).HCell());
+	position.SetVCell(CellPosition::GetCellPositionFromNum(Cellnum).VCell());
+	this->cardprice = CP;
+	this->Fees = F;
+}

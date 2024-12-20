@@ -437,6 +437,15 @@
     <ClInclude Include="Card13.h">
       <Filter>GameObjects\Cards</Filter>
     </ClInclude>
+    <ClInclude Include="Card7.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="Card8.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
+    <ClInclude Include="Card9.h">
+      <Filter>GameObjects\Cards</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="PT Project.rc" />

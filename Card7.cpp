@@ -24,3 +24,21 @@ void Card7::Apply(Grid* pGrid, Player* pPlayer)
 	pPlayer->Move(pGrid, diceNumber);
 	
 }
+
+void Card7::Save(ofstream& OutFile, int Obj)
+{
+	if (Obj == 7)
+	{
+		OutFile << cardNumber << " " << position.GetCellNum() << endl;
+	}
+	else
+		return;
+}
+
+void Card7::Load(ifstream& Infile)
+{
+	int Cellnum;
+	Infile >> Cellnum;
+	position.SetHCell(CellPosition::GetCellPositionFromNum(Cellnum).HCell());
+	position.SetVCell(CellPosition::GetCellPositionFromNum(Cellnum).VCell());
+}

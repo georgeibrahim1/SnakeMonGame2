@@ -35,3 +35,22 @@ void Card2::Apply(Grid* pGrid, Player* pPlayer)
 	pPlayer->SetWallet(pPlayer->GetWallet() + walletAmount);
 
 }
+
+void Card2::Load(ifstream& Infile)
+{
+	int Cellnum, WA;
+	Infile >> Cellnum >> WA;
+	position.SetHCell(CellPosition::GetCellPositionFromNum(Cellnum).HCell());
+	position.SetVCell(CellPosition::GetCellPositionFromNum(Cellnum).VCell());
+	this->walletAmount = WA;
+}
+
+void Card2::Save(ofstream& OutFile, int Obj)
+{
+	if (Obj == 2)
+	{
+		OutFile << cardNumber << " " << position.GetCellNum() << " " << walletAmount << endl;
+	}
+	else
+		return;
+}

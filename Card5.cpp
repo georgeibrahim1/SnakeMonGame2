@@ -18,3 +18,21 @@ void Card5::Apply(Grid* pGrid, Player* pPlayer)
 	pPlayer->Move(pGrid , lastRoll);
 	
 }
+
+void Card5::Save(ofstream& OutFile, int Obj)
+{
+    if (Obj == 5)
+    {
+        OutFile << cardNumber << " " << position.GetCellNum() << endl;
+    }
+    else
+        return;
+}
+
+void Card5::Load(ifstream& Infile)
+{
+    int Cellnum;
+    Infile >> Cellnum;
+    position.SetHCell(CellPosition::GetCellPositionFromNum(Cellnum).HCell());
+    position.SetVCell(CellPosition::GetCellPositionFromNum(Cellnum).VCell());
+}

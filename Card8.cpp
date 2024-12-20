@@ -19,3 +19,21 @@ void Card8::Apply(Grid* pGrid, Player* pPlayer)
 	pGrid->PrintErrorMessage("You will skip next turn. Click to continue ......");
 
 }
+
+void Card8::Save(ofstream& OutFile, int Obj)
+{
+	if (Obj == 8)
+	{
+		OutFile << cardNumber << " " << position.GetCellNum() << endl;
+	}
+	else
+		return;
+}
+
+void Card8::Load(ifstream& Infile)
+{
+	int Cellnum;
+	Infile >> Cellnum;
+	position.SetHCell(CellPosition::GetCellPositionFromNum(Cellnum).HCell());
+	position.SetVCell(CellPosition::GetCellPositionFromNum(Cellnum).VCell());
+}

@@ -40,3 +40,20 @@ void Card9::Apply(Grid* pGrid, Player* pPlayer)
 
 }
 
+void Card9::Save(ofstream& OutFile, int Obj)
+{
+	if (Obj == 9)
+	{
+		OutFile << cardNumber << " " << position.GetCellNum() << " " << cellnum << endl;
+	}
+	else
+		return;
+}
+
+void Card9::Load(ifstream& Infile)
+{
+	int Cellnum;
+	Infile >> Cellnum;
+	position.SetHCell(CellPosition::GetCellPositionFromNum(Cellnum).HCell());
+	position.SetVCell(CellPosition::GetCellPositionFromNum(Cellnum).VCell());
+}

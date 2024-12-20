@@ -13,6 +13,10 @@ public:
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer);
 
+	virtual void Save(ofstream& OutFile, int);
+	virtual void Load(ifstream& Infile);
+
+
 	virtual ~Card10(); // A Virtual Destructor
 };
 
