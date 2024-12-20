@@ -222,6 +222,9 @@
     <ClInclude Include="Card4.h" />
     <ClInclude Include="Card5.h" />
     <ClInclude Include="Card6.h" />
+    <ClInclude Include="Card7.h" />
+    <ClInclude Include="Card8.h" />
+    <ClInclude Include="Card9.h" />
     <ClInclude Include="CardOne.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="CellPosition.h" />
