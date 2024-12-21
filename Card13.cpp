@@ -12,6 +12,15 @@ Card13::Card13(const CellPosition& pos) : Card(pos) // set the cell position of 
 Card13::~Card13(void)
 {
 }
+
+void Card13::GetCopy(Grid* pGrid)
+{
+	Card* c;
+	c = new Card13(this->GetPosition());
+	c->SetCardNumber(13);
+	pGrid->SetClipboard(c);
+
+}
 void Card13::ReadCardParameters(Grid* pGrid)
 {
 	static bool cardisdesigned = false;// Static boolean to take paramters of the card only once

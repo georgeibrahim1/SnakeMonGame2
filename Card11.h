@@ -11,6 +11,9 @@ public:
 
 	virtual void ReadCardParameters(Grid* pGrid);
 
+	virtual void GetCopy(Grid* pGrid);
+
+
 	virtual void Apply(Grid* pGrid, Player* pPlayer);
 
 	virtual void Save(ofstream& OutFile, int);
