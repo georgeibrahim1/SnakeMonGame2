@@ -50,6 +50,19 @@ bool Grid::IsOverlapping(GameObject* newObj) const {
 	return false; 
 }
 
+bool Grid::Check_snakeendcell_ladderendcell_loop(GameObject* newObj)
+{
+	for (int v = 0; v < NumVerticalCells; ++v)
+	{
+		int h = newObj->GetPosition().HCell();
+		GameObject* existingObj = CellList[v][h]->GetGameObject();
+		if (existingObj && existingObj->Check_snakeendcell_ladderendcell(newObj))
+		{
+			return true;
+		}
+	}
+	return false;
+}
 
 void Grid::CleanGrid()
 {

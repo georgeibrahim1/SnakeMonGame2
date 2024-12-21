@@ -44,6 +44,7 @@ public:
 
 	// checks if the cell has a 
 	virtual bool IsOverlapping(GameObject* newObj) const;
+	virtual bool Check_snakeendcell_ladderendcell(GameObject*);
 	virtual void GetCopy(Grid* pGrid);
 	virtual ~GameObject(); // Virtual destructor
 };

@@ -1,4 +1,5 @@
 #include "Snake.h"
+#include "Ladder.h"
 #include "Player.h"
 Snake::Snake(const CellPosition& startCellPos, const CellPosition& endCellPos) : GameObject(startCellPos)
 {
@@ -84,6 +85,20 @@ bool Snake::IsOverlapping(GameObject* newObj) const
 			}
 		}
 		return false;
+}
+
+bool Snake::Check_snakeendcell_ladderendcell(GameObject* newObj)
+{
+	if (dynamic_cast<Snake*>(this) && dynamic_cast<Ladder*>(newObj))
+	{
+		Ladder* otherLadder = dynamic_cast<Ladder*>(newObj);
+		if (otherLadder->GetPosition().HCell() == this->endCellPos.HCell() && this->endCellPos.VCell() == otherLadder->GetPosition().VCell())
+		{
+			return true;
+		}
+		return false;
+	}
+	return false;
 }
 
 CellPosition Snake::GetEndPosition() const

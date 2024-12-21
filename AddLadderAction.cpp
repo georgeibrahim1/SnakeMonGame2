@@ -110,12 +110,11 @@ void AddLadderAction::Execute()
 		pGrid->PrintErrorMessage("Overlapping occured!");
 		return;
 	}
-	//if(pGrid->IsOverlapping)
-	
-
-
-
-
+	if (pGrid->Check_snakeendcell_ladderendcell_loop(C))
+	{
+		pGrid->PrintErrorMessage("Start Cell of a ladder cannot be the End Cell of a snake");
+		return;
+	}
 	// Add the card object to the GameObject of its Cell:
 	bool added = pGrid->AddObjectToCell(pLadder);
 

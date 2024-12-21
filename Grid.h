@@ -86,7 +86,7 @@ public:
 	GameObject* GetObj(CellPosition pos);// added by team a gameobject getter
 	void Copy(CellPosition pos, Grid* pGrid); // copies a card to the clipboard
 	bool IsOverlapping(GameObject* newObj) const;
-
+	bool Grid::Check_snakeendcell_ladderendcell_loop(GameObject* newObj);
 	void ResetGame();
 
 	void CleanGrid();
