@@ -288,6 +288,7 @@ GameObject* Grid::GetObj(CellPosition pos) // added by team a gameobject getter
 void Grid::ResetGame()
 {
 	endGame = 0;
+
 	for (int i = 0; i < MaxPlayerCount; i++)
 	{
 		Player* pPlayer = PlayerList[i];
@@ -303,7 +304,22 @@ void Grid::ResetGame()
 		pPlayer->ResetStepCount();
 	}
 
+	
+	for (int i = 10; i < 14; i++)
+	{
+		setwasexecuted(i, false);
+	}
+
 	SetCurrentPlayer(0);
+}
+void Grid::setwasexecuted(int cardNumber, bool state)
+{
+	wasexecuted[cardNumber - 10] = state;
+}
+
+bool Grid::getwasexecuted(int cardNumber)
+{
+	return wasexecuted[cardNumber - 10];
 }
 
 int Grid::getNumOfObjects(int Object)

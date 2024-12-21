@@ -33,7 +33,7 @@ void Player::SetWallet(int wallet)
 		this->wallet = wallet;
 	}
 	else
-		wallet = 0;
+		this->wallet = 0;
 }
 
 int Player::GetWallet() const

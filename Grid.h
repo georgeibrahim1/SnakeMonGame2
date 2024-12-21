@@ -31,7 +31,7 @@ class Grid
 	Card * Clipboard;	   // This is used in copy/cut/paste card (should be set in copy/cut and got in paste)
 
 	bool endGame;	       // A boolean indicating if the Game is ended or not (a player reaches the end cell of the grid or not)
-
+	bool wasexecuted[4]; // Boolean indicating if a certain card from 10-13 is owned or not
 public:
 
 	Grid(Input * pIn, Output * pOut);	  // Gives the Grid a Pointer to the Output Object and the Input Object
@@ -91,7 +91,8 @@ public:
 	void CleanGrid();
 
 	void Grid::SetCurrentPlayer(int);
-	
+	void setwasexecuted(int, bool);
+	bool getwasexecuted(int);
 
 	~Grid(); // A destructor for any needed deallcations
 };

@@ -7,8 +7,6 @@ int Card12::Fees = 0;
 Card12::Card12(const CellPosition& pos) : Card(pos) // set the cell position of the card
 {
 	cardNumber = 12;
-	//cardprice = 0;
-	//Fees = 0;
 }
 
 Card12::~Card12(void)
@@ -53,11 +51,10 @@ void Card12::ReadCardParameters(Grid* pGrid)
 }
 void Card12::Apply(Grid* pGrid, Player* pPlayer)
 {
-	static bool wasexecuted = false;//An indicator if a certain card is owned by a player or not
-	static int ownernum = 0;// A static variable that will hold the player number of owner
+	static int ownernum = 5;// A static variable that will hold the player number of owner
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
-	if (!wasexecuted)// False means the card is not owned yet
+	if (!pGrid->getwasexecuted(12))// False means the card is not owned yet
 	{
 		int Flag = 0;
 		Card::Apply(pGrid, pPlayer);
@@ -70,9 +67,9 @@ void Card12::Apply(Grid* pGrid, Player* pPlayer)
 			pOut->PrintMessage("Please type in 0 or 1 only ...");
 			yes_no = pIn->GetInteger(pOut, Flag);
 		}
-		if (yes_no)
+		if (yes_no)//Executes if player said yes
 		{
-			wasexecuted = true;//To indicate this card is owned by a player
+			pGrid->setwasexecuted(12, true);//To indicate this card is owned by a player
 			pPlayer->SetWallet((pPlayer->GetWallet()) - cardprice);
 			pOut->PrintMessage("Player " + to_string(pPlayer->GetPlayerNum()) + " is the owner of Card 12");
 			this_thread::sleep_for(chrono::seconds(2));
@@ -80,22 +77,21 @@ void Card12::Apply(Grid* pGrid, Player* pPlayer)
 		}
 
 	}
-	else if (wasexecuted)// True means the card is owned 
+	else if (pGrid->getwasexecuted(12))// True means the card is owned 
 	{
 		if (ownernum != pPlayer->GetPlayerNum())
 			pGrid->PrintErrorMessage("You have reached a station bought by player " + to_string(ownernum) + ". Click any key to continue");
 		else
 			pGrid->PrintErrorMessage("You have reached your station. Click any key to continue");
 		int moneyleft = pPlayer->GetWallet() - Fees;
-		if (moneyleft < 0)
-		{
-			moneyleft = 0;
-		}
 		pPlayer->SetWallet(moneyleft);// Deduct money to pay owner
 		int playernum = pPlayer->GetPlayerNum();// Taking the number of the player paying the fee to the owner in a variable "playernum"
 		pGrid->SetCurrentPlayer(ownernum);// Change "current player" from the one paying fee to the owner
 		pPlayer = pGrid->GetCurrentPlayer();// Changing the pointer "pPlayer" to point at the owner to increase owner's wallet
-		pPlayer->SetWallet((pPlayer->GetWallet()) + Fees);// Increasing owner's wallet with the money deducted from the other player
+		if (moneyleft >= 0)
+			pPlayer->SetWallet((pPlayer->GetWallet()) + Fees);// Increasing owner's wallet with the money deducted from the other player
+		else
+			pPlayer->SetWallet((pPlayer->GetWallet()) + Fees + moneyleft);
 		pGrid->SetCurrentPlayer(playernum);// Get back the "current player" to the one paying the fee
 		pPlayer = pGrid->GetCurrentPlayer();// Pointing back the "pPlayer" pointer to the player paying the fee
 
