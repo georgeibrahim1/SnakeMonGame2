@@ -11,6 +11,23 @@ CardOne::CardOne(const CellPosition & pos) : Card(pos) // set the cell position 
 CardOne::~CardOne(void)
 {
 }
+void CardOne::SetwalletAmount(int w)
+{
+	walletAmount = w;
+}
+int CardOne::GetwalletAmount()
+{
+	return walletAmount;
+}
+void CardOne::GetCopy(Grid* pGrid)
+{
+	Card* c;
+	c = new CardOne(this->GetPosition());
+	c->SetCardNumber(1);
+	c->SetwalletAmount(this->GetwalletAmount());
+	pGrid->SetClipboard(c);
+
+}
 
 void CardOne::ReadCardParameters(Grid * pGrid)
 {

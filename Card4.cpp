@@ -8,7 +8,14 @@ Card4::Card4(const CellPosition& pos) : Card(pos) // set the cell position of th
 Card4::~Card4(void)
 {
 }
+void Card4::GetCopy(Grid* pGrid)
+{
+	Card* c;
+	c = new Card4(this->GetPosition());
+	c->SetCardNumber(4);
+	pGrid->SetClipboard(c);
 
+}
 
 void Card4::Apply(Grid* pGrid, Player* pPlayer)
 {

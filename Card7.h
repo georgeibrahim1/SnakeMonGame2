@@ -9,6 +9,9 @@ public:
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of Card7 on the passed Player
 	// Gives the player another dice roll.
 
+	virtual void GetCopy(Grid* pGrid);
+
+
 	virtual void Save(ofstream& OutFile, int);
 	virtual void Load(ifstream& Infile);
 

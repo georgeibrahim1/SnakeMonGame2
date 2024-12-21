@@ -284,6 +284,13 @@ GameObject* Grid::GetObj(CellPosition pos) // added by team a gameobject getter
 	else
 		return NULL;
 }
+void Grid::Copy(CellPosition pos, Grid* pGrid)
+{
+	if (pos.IsValidCell()) // Check if valid position
+		if(CellList[pos.VCell()][pos.HCell()]->GetGameObject())
+			(CellList[pos.VCell()][pos.HCell()]->GetGameObject())->GetCopy(pGrid);
+
+}
 
 void Grid::ResetGame()
 {

@@ -20,10 +20,10 @@ bool GameObject::IsOverlapping(GameObject* newObj) const
 	return 0;
 
 }
-/*GameObject* GameObject::GetCopy()
+void GameObject::GetCopy(Grid* pGrid)
 {
-	return NULL;
-}*/
+	
+}
 
 GameObject::~GameObject()
 {

@@ -42,8 +42,8 @@ void EditCardAction::Execute()
 	}
 
 	Card* pCard = NULL; // will point to the card object type
-	pCard = dynamic_cast<Card*>(pGrid->GetObj(cardPosition)); // check if this object is a card, if it's not a card, pCard will point to Null
-	if (pCard) // checks if pCard isn't
+	pCard = dynamic_cast<Card*>(pGrid->GetObj(cardPosition)); // check if this object is a card, if it's not a card, pCard will point to NULL
+	if (pCard) // checks if pCard isn't pointing to NULL
 	{
 		pCard->ReadCardParameters(pGrid);
 	}

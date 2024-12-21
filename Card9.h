@@ -14,6 +14,9 @@ public:
 
 	virtual void Save(ofstream& OutFile, int);
 	virtual void Load(ifstream& Infile);
+	virtual void Setcellnum(int w);
+	virtual int Getcellnum();
+	virtual void GetCopy(Grid* pGrid);
 
 
 	virtual ~Card9(); // A Virtual Destructor

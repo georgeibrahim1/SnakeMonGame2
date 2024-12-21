@@ -35,6 +35,23 @@ void Card2::Apply(Grid* pGrid, Player* pPlayer)
 	pPlayer->SetWallet(pPlayer->GetWallet() + walletAmount);
 
 }
+void Card2::SetwalletAmount(int w)
+{
+	walletAmount = w;
+}
+int Card2::GetwalletAmount()
+{
+	return walletAmount;
+}
+void Card2::GetCopy(Grid* pGrid)
+{
+	Card* c;
+	c = new Card2(this->GetPosition());
+	c->SetCardNumber(2);
+	c->SetwalletAmount(this->GetwalletAmount());
+	pGrid->SetClipboard(c);
+
+}
 
 void Card2::Load(ifstream& Infile)
 {

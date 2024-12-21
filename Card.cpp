@@ -49,6 +49,26 @@ GameObject* Card::GetCopy()
 	
 	return cardobj;
 }*/
+void Card:: SetwalletAmount(int w)
+{
+
+}
+int Card:: GetwalletAmount()
+{
+	return 0;
+}
+void Card::Setcellnum(int w)
+{
+
+}
+int Card::Getcellnum()
+{
+	return 0;
+}
+void Card::GetCopy(Grid* pGrid)
+{
+
+}
 
 void Card::Save(ofstream& OutFile, int)
 {

@@ -9,6 +9,14 @@ Card5::~Card5(void)
 {
 }
 
+void Card5::GetCopy(Grid* pGrid)
+{
+    Card* c;
+    c = new Card5(this->GetPosition());
+    c->SetCardNumber(5);
+    pGrid->SetClipboard(c);
+
+}
 
 void Card5::Apply(Grid* pGrid, Player* pPlayer)
 {

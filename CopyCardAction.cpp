@@ -38,14 +38,21 @@ void CopyCardAction::Execute()
 	}
 
 
-	else if (pGrid->HasCard(SourceCell)) // Check if the cell has a card
+	else if (pGrid->GetObj(SourceCell)) // Check if the cell has an object
 	{
-		Card* pCard = pGrid->HasCard(SourceCell);  
-		pGrid->SetClipboard(pCard); 	// Copy Card to Clipboard
-		string Msg = "Card " + to_string(pCard->GetCardNumber()) + " Copied To Clipboard,  Click to continue ...";
-		pGrid->PrintErrorMessage(Msg);
+		//Card* pCard = pGrid->HasCard(SourceCell);  
+		//pGrid->SetClipboard(pCard); 	// Copy Card to Clipboard
+		if (dynamic_cast<Card*>(pGrid->GetObj(SourceCell)))
+		{
+			pGrid->Copy(SourceCell, pGrid);
+			//string Msg = "Card " + to_string(pCard->GetCardNumber()) + " Copied To Clipboard,  Click to continue ...";
+			//pGrid->PrintErrorMessage(Msg);
 
-		//pGrid->PrintErrorMessage("Card  Copied To Clipboard,  Click to continue ...");
+				pGrid->PrintErrorMessage("Card  Copied To Clipboard,  Click to continue ...");
+		}
+		else
+			pGrid->PrintErrorMessage("Error: Cell doesn't have a card ! Click to continue ...");
+
 
 	}
 	else 

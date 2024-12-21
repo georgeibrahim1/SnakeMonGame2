@@ -8,6 +8,9 @@ public:
 
 		virtual void Apply(Grid* pGrid, Player* pPlayer);
 		
+		virtual void GetCopy(Grid* pGrid);
+
+
 		virtual void Save(ofstream& OutFile, int);
 		virtual void Load(ifstream& Infile);
 

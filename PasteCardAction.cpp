@@ -43,6 +43,8 @@ void PasteCardAction::Execute()
 			added = pGrid->AddObjectToCell(pCard); // pastes the card to the desired cell
 			if (added == 0) // Fails to add because there is an object in that cell
 				pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
+			else // card was added succesfully
+				pGrid->SetClipboard(NULL); // Set Clipboard back to NULL
 		}
 		else
 			pGrid->PrintErrorMessage("Error: Clipboard is empty ! Click to continue ...");

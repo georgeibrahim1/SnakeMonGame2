@@ -26,10 +26,15 @@ public:
 	virtual void Apply(Grid* pGrid, Player* pPlayer);  // It applies the effect of the Card Type on the passed player
 	                                                   // It is a virtual function (implementation depends on Card Type)
 	//virtual GameObject* GetCopy();
+	virtual void GetCopy(Grid* pGrid);
+
 	//Card* GetCard(Grid* pGrid, const CellPosition& pos);
     virtual void Save(ofstream& OutFile, int);
 	virtual void Load(ifstream& Infile);
-
+	virtual void SetwalletAmount(int w);
+	virtual int GetwalletAmount();
+	virtual void Setcellnum(int w);
+	virtual int Getcellnum();
 
 	virtual ~Card(); // A Virtual Destructor
 };

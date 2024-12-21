@@ -16,6 +16,9 @@ public:
 	virtual void Save(ofstream& OutFile, int);
 	virtual void Load(ifstream& Infile);
 
+	virtual void GetCopy(Grid* pGrid);
+	virtual void SetwalletAmount(int w);
+	virtual int GetwalletAmount();
 
 	virtual ~Card2(); // A Virtual Destructor
 };

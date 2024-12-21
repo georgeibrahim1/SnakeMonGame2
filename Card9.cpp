@@ -12,6 +12,24 @@ Card9::Card9(const CellPosition& pos) : Card(pos) // set the cell position of th
 Card9::~Card9(void)
 {
 }
+
+void Card9::Setcellnum(int w)
+{
+	cellnum = w;
+}
+int Card9::Getcellnum()
+{
+	return cellnum;
+}
+void Card9::GetCopy(Grid* pGrid)
+{
+	Card* c;
+	c = new Card9(this->GetPosition());
+	c->SetCardNumber(9);
+	c->Setcellnum(this->Getcellnum());
+	pGrid->SetClipboard(c);
+
+}
 void Card9::ReadCardParameters(Grid* pGrid)
 {
 	Output* pOut = pGrid->GetOutput();

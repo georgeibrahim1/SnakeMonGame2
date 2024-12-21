@@ -17,8 +17,13 @@ public:
 	virtual void ReadCardParameters(Grid * pGrid); // Reads the parameters of CardOne which is: walletAmount
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applies the effect of CardOne on the passed Player
-	                                                  // by decrementing the player's wallet by the walletAmount data member
-	
+	       
+	virtual void GetCopy(Grid* pGrid);
+
+	// by decrementing the player's wallet by the walletAmount data member
+	virtual void SetwalletAmount(int w);
+	virtual int GetwalletAmount();
+
 	virtual void Save(ofstream& OutFile, int);
 	virtual void Load(ifstream& Infile);
 
