@@ -82,7 +82,7 @@ public:
 	void PrintErrorMessage(string msg); // Prints an error message on statusbar, Waits for mouse click then clears statusbar
 									    // We added this function once here because it is used many times by other classes
 	bool HasObject(CellPosition pos); // returns 1 if cell has an object, returns 0 if not. (added by team)
-	Card* HasCard(CellPosition pos); // returns 1 if cell has an object, returns 0 if not. (added by team)
+	//Card* HasCard(CellPosition pos); 
 	GameObject* GetObj(CellPosition pos);// added by team a gameobject getter
 	void Copy(CellPosition pos, Grid* pGrid); // copies a card to the clipboard
 	bool IsOverlapping(GameObject* newObj) const;

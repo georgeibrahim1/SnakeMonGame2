@@ -282,14 +282,14 @@ bool Grid::HasObject(CellPosition pos)  // by team, check for class responsibili
 	}
 	return false; // if not a valid position
 }
-Card* Grid::HasCard(CellPosition pos)  // by team, check for class responsibility
+/* Card* Grid::HasCard(CellPosition pos)  // by team, check for class responsibility
 {
 	if (pos.IsValidCell()) // Check if valid position
 		return CellList[pos.VCell()][pos.HCell()]->HasCard();
 	else
 		return NULL;
 
-}
+}*/
 GameObject* Grid::GetObj(CellPosition pos) // added by team a gameobject getter
 {
 	if (pos.IsValidCell()) // Check if valid position
