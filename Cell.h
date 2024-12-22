@@ -23,7 +23,7 @@ public:
 
 	Cell(const CellPosition & pos); // A constructor initializes the cell position with the passed CellPosition
 	Cell(int v, int h);		        // A constructor initializes the cell position with the passed vCell and hCell
-
+	~Cell(); // a destructor to deallocate gameobjects
 	// ======= Setters and Getters Functions ======= 
 
 	CellPosition GetCellPosition() const;   // A getter for the "position" data member

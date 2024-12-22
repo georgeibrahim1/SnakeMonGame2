@@ -18,6 +18,14 @@ Cell::Cell(int v, int h) : position(v, h)
 	// initializes the data members (position & pGameObject)
 	pGameObject = NULL;
 }
+Cell :: ~Cell()
+{
+	if (this->GetGameObject()) // check if the cell has an object
+	{
+		delete this->GetGameObject(); // deallocating memory reserved for that gameObject
+		this->SetGameObject(NULL);
+	}
+}
 
 
 // ======= Setters and Getters Functions ======= 
