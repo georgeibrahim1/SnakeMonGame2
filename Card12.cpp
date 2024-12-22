@@ -23,10 +23,9 @@ void Card12::GetCopy(Grid* pGrid)
 }
 void Card12::ReadCardParameters(Grid* pGrid)
 {
-	static bool cardisdesigned = false;// Static boolean to take paramters of the card only once
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
-	if (!cardisdesigned)// Parameters of card not taken yet
+	if (!pGrid->getwasexecuted(16))// Parameters of card not taken yet
 	{
 		pOut->PrintMessage("New CardTwelve ...");
 		this_thread::sleep_for(chrono::seconds(1));
@@ -50,9 +49,9 @@ void Card12::ReadCardParameters(Grid* pGrid)
 			Fees = pIn->GetInteger(pOut, Flag);
 		}
 		pGrid->PrintErrorMessage("Card's Price : " + to_string(cardprice) + " , Fees : " + to_string(Fees) + " , Click to continue ...");
-		cardisdesigned = true;
+		pGrid->setwasexecuted(16,true);
 	}
-	else if (cardisdesigned)// Parameters already taken
+	else if (pGrid->getwasexecuted(16))// Parameters already taken
 	{
 		pGrid->PrintErrorMessage("Another CardTen with Card's Price : " + to_string(cardprice) + " , Fees : " + to_string(Fees) + " , Click to continue ...");
 	}

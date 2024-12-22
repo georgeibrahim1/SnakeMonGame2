@@ -332,6 +332,7 @@ void Grid::ResetGame()
 
 	SetCurrentPlayer(0);
 }
+bool Grid::wasexecuted[8];
 void Grid::setwasexecuted(int cardNumber, bool state)
 {
 	wasexecuted[cardNumber - 10] = state;

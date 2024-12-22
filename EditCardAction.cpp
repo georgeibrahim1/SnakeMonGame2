@@ -45,7 +45,12 @@ void EditCardAction::Execute()
 	pCard = dynamic_cast<Card*>(pGrid->GetObj(cardPosition)); // check if this object is a card, if it's not a card, pCard will point to NULL
 	if (pCard) // checks if pCard isn't pointing to NULL
 	{
-		pCard->ReadCardParameters(pGrid);
+		int cardNumber = pCard->GetCardNumber();
+		if (cardNumber > 9 && cardNumber < 14)
+		{
+			pGrid->setwasexecuted(cardNumber + 4, false);
+			pCard->ReadCardParameters(pGrid);
+		}
 	}
 	else
 		pGrid->PrintErrorMessage("Error: Cell doesn't have a card ! Click to continue ...");
