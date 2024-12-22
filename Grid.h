@@ -31,7 +31,7 @@ class Grid
 	Card * Clipboard;	   // This is used in copy/cut/paste card (should be set in copy/cut and got in paste)
 
 	bool endGame;	       // A boolean indicating if the Game is ended or not (a player reaches the end cell of the grid or not)
-	bool wasexecuted[4]; // Boolean indicating if a certain card from 10-13 is owned or not
+	static bool wasexecuted[8]; // Boolean member : from 0-3 to check if a card is owned or not for cards 10-13 & 4-7 to check if the card has taken parameters or not in design mode
 public:
 
 	Grid(Input * pIn, Output * pOut);	  // Gives the Grid a Pointer to the Output Object and the Input Object
@@ -82,7 +82,7 @@ public:
 	void PrintErrorMessage(string msg); // Prints an error message on statusbar, Waits for mouse click then clears statusbar
 									    // We added this function once here because it is used many times by other classes
 	bool HasObject(CellPosition pos); // returns 1 if cell has an object, returns 0 if not. (added by team)
-	Card* HasCard(CellPosition pos); // returns 1 if cell has an object, returns 0 if not. (added by team)
+	//Card* HasCard(CellPosition pos); 
 	GameObject* GetObj(CellPosition pos);// added by team a gameobject getter
 	void Copy(CellPosition pos, Grid* pGrid); // copies a card to the clipboard
 	bool IsOverlapping(GameObject* newObj) const;

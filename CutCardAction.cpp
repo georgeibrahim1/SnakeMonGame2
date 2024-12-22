@@ -38,15 +38,11 @@ void CutCardAction::Execute()
 
 	else if (pGrid->GetObj(SourceCell)) // Check if the cell has an object
 	{
-		//Card* pCard = pGrid->HasCard(SourceCell);
 
 		if (dynamic_cast<Card*>(pGrid->GetObj(SourceCell)))
 		{
 			pGrid->Copy(SourceCell, pGrid); 	// Copy Card to Clipboard
-			//string Msg = "Card " + to_string(pCard->GetCardNumber()) + " Copied To Clipboard,  Click to continue ...";
-			//pGrid->PrintErrorMessage(Msg);
 			pGrid->RemoveObjectFromCell(SourceCell); //Delete the card to complete the Cut Action
-			//pGrid->PrintErrorMessage("Card  Copied To Clipboard,  Click to continue ...");
 		}
 		else
 			pGrid->PrintErrorMessage("Error: Cell doesn't have a card ! Click to continue ...");

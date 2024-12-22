@@ -38,17 +38,7 @@ void Card::Apply(Grid* pGrid, Player* pPlayer)
 	pGrid->PrintErrorMessage("You have reached card " + to_string(cardNumber) + ". Click to continue ...");
 }
 
-/* Card* Card::GetCard(Grid* pGrid, const CellPosition& pos)
-{
-	pGrid
 
-}
-GameObject* Card::GetCopy()
-{
-	Card* cardobj = new Card(position);
-	
-	return cardobj;
-}*/
 void Card:: SetwalletAmount(int w)
 {
 
