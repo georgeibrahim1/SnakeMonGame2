@@ -88,7 +88,7 @@ public:
 	bool IsOverlapping(GameObject* newObj) const;
 	bool Grid::Check_snakeendcell_ladderendcell_loop(GameObject* newObj);
 	void ResetGame();
-
+	Player* GetPlayer(int playerIndex);
 	void CleanGrid();
 
 	void Grid::SetCurrentPlayer(int);

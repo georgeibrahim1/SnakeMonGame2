@@ -18,6 +18,13 @@ class Player
 	                       // it is used to indicate when to move and when to add to your wallet
 	bool ToSkip; // added by team. used in card 8, indicates that this player should not roll in his next turn
 	bool AnotherRoll; // added by team. used in card 7, indicates that this player gets another roll
+	
+	bool burnEffectActive; 
+	int burnRemainingTurns;     // How many turns are left for the burn effect
+
+	bool poisonEffectActive;
+	int poisonRemainingTurns;    // How many turns are left for the poison effect
+
 public:
 
 	Player(Cell * pCell, int playerNum); // Constructor making any needed initializations
@@ -53,6 +60,12 @@ public:
 	                                            // and Applies the Game Object's effect (if any) of the end reached cell 
 	                                            // for example, if the end cell contains a ladder, take it
 	
+	void DeductCoins(int);
+	void SetBurnEffect();
+	void SetPoisonEffect();
+
+	bool SpecialAttack(Grid* pGrid, int attackType);
+
 	void AppendPlayerInfo(string & playersInfo) const; // Appends player's info to the input string, 
 	                                                   // for example: P0(wallet, turnCount)
 

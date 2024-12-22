@@ -142,6 +142,13 @@ Card * Grid::GetClipboard() const // to be used in paste
 	return Clipboard;
 }
 
+Player* Grid::GetPlayer(int playerIndex) {
+	if (playerIndex < 0 || playerIndex > 3 ) {
+		return nullptr;
+	}
+	return PlayerList[playerIndex];
+}
+
 void Grid::SetEndGame(bool endGame)
 {
 	this->endGame = endGame;
