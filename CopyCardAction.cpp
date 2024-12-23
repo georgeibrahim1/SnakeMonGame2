@@ -40,9 +40,9 @@ void CopyCardAction::Execute()
 
 	else if (pGrid->GetObj(SourceCell)) // Check if the cell has an object
 	{
-		if (dynamic_cast<Card*>(pGrid->GetObj(SourceCell)))
+		if (dynamic_cast<Card*>(pGrid->GetObj(SourceCell))) // if the cell has a card
 		{
-			pGrid->Copy(SourceCell, pGrid);
+			pGrid->Copy(SourceCell, pGrid); //copies the card in clipboard
 			pGrid->PrintErrorMessage("Card  Copied To Clipboard,  Click to continue ...");
 		}
 		else

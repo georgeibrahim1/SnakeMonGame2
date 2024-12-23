@@ -28,8 +28,8 @@ void Card7::Apply(Grid* pGrid, Player* pPlayer)
 	// Generate a random number from 1 to 6 
 	srand((int)time(NULL)); // time seed
 	int diceNumber = 1 + rand() % 6; // from 1 to 6 
-	pPlayer->SetAnotherRoll(1);
-	pPlayer->Move(pGrid, diceNumber);
+	pPlayer->SetAnotherRoll(1); // indicates that this is a second roll, turncount won't increase again
+	pPlayer->Move(pGrid, diceNumber); // moves the pkayer again with the new roll
 	
 }
 

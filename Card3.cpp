@@ -12,9 +12,9 @@ Card3::~Card3(void)
 void Card3::GetCopy(Grid* pGrid)
 {
 	Card* c;
-	c = new Card3(this->GetPosition());
+	c = new Card3(this->GetPosition()); 
 	c->SetCardNumber(3);
-	pGrid->SetClipboard(c);
+	pGrid->SetClipboard(c); 
 
 }
 
