@@ -35,13 +35,13 @@ void AddCardAction::ReadActionParameters()
 {	
 
 	///Done: Implement this function as mentioned in the guideline steps (numbered below) below
-	int Flag = 0;
+	int Flag = 0;// Used in get integer
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
 	pOut->PrintMessage("New Card: Type in card number ...");
 	cardNumber = pIn->GetInteger(pOut,Flag);
-	while (Flag != 0 || cardNumber < 1 || cardNumber > 13)
+	while (Flag != 0 || cardNumber < 1 || cardNumber > 13)//Must be between 1 & 13
 	{
 		pOut->PrintMessage("Invalid Input!");
 		this_thread::sleep_for(chrono::seconds(1));

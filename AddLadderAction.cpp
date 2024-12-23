@@ -30,27 +30,9 @@ void AddLadderAction::ReadActionParameters()
 		// Read the startPos parameter
 		pOut->PrintMessage("New Ladder: Click on its Start Cell (bottom of ladder) ...");
 		startPos = pIn->GetCellClicked();
-		/*if (!startPos.IsValidCell())
-		{
-			pOut->PrintMessage("Invalid Cell");
-			this_thread::sleep_for(chrono::seconds(1)); // makes a pause for 1 second
-			return;
-		}*/
 		// Read the endPos parameter
 		pOut->PrintMessage("New Ladder: Click on its End Cell (top of ladder) ...");
 		endPos = pIn->GetCellClicked();
-		/*startcell = startPos.GetCellNumFromPosition(startPos); // Cell no. of startPos
-		endcell = endPos.GetCellNumFromPosition(endPos); // Cell no. of endPos
-		if (startcell>endcell)
-		{
-			pOut->PrintMessage("End Cell can't be smaller than Start Cell!");
-			return;
-		}
-		if((endcell - startcell) % 11 != 0)
-		{
-			pOut->PrintMessage("Start Cell & End Cell must be in the same column!");
-			return;
-		}
 
 	 // This validation ensures the start cell & end cell are vertically aligned*/
 		
@@ -88,14 +70,14 @@ void AddLadderAction::Execute()
 		pGrid->PrintErrorMessage("End Cell can't be smaller than Start Cell!");
 		return;
 	}
-	if ((endcell - startcell) % 11 != 0)
+	if ((endcell - startcell) % 11 != 0)// The remainder of dividing by 11 must be a zero 
 	{
 		pGrid->PrintErrorMessage("Start Cell & End Cell must be in the same column!");
 		return;
 	}
 
 	GameObject* isCard = pGrid->GetObj(endPos);
-	Card* HasCard = dynamic_cast<Card*>(isCard);
+	Card* HasCard = dynamic_cast<Card*>(isCard);// Check if object is a card
 	if (pGrid->HasObject(endPos) && !HasCard)
 	{
 		pGrid->PrintErrorMessage("End Cell cannot be the start of another ladder or snake");//This error occurs when Top of New Ladder is with Bottom of Old Ladder or with Head of Snake

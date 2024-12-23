@@ -2,8 +2,8 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
-int Card10::cardprice = 0;
-int Card10::Fees = 0;
+int Card10::cardprice = 0;//Static variable for cardprice
+int Card10::Fees = 0;//Static variable for cardprice
 Card10::Card10(const CellPosition& pos) : Card(pos) // set the cell position of the card
 {
 	cardNumber = 10;

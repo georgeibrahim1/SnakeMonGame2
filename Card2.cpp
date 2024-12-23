@@ -32,7 +32,7 @@ void Card2::ReadCardParameters(Grid* pGrid)
 void Card2::Apply(Grid* pGrid, Player* pPlayer)
 {
 	Card::Apply(pGrid, pPlayer);
-	pPlayer->SetWallet(pPlayer->GetWallet() + walletAmount);
+	pPlayer->SetWallet(pPlayer->GetWallet() + walletAmount);// Set the wallet with updated coins
 
 }
 void Card2::SetwalletAmount(int w)

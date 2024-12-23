@@ -21,25 +21,7 @@ void AddSnakeAction::ReadActionParameters()
 	Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
-
-	/*int startcell, endcell; // Cellnumber of the start & end of the snake
-	do {
-		// Read the startPos parameter
-		pOut->PrintMessage("New Snake: Click on its Start Cell (top of snake) ...");
-		startPos = pIn->GetCellClicked();
-
-		// Read the endPos parameter
-		pOut->PrintMessage("New Snake: Click on its End Cell (bottom of snake) ...");
-		endPos = pIn->GetCellClicked();
-		startcell = startPos.GetCellNumFromPosition(startPos); // Cell no. of startPos
-		endcell = endPos.GetCellNumFromPosition(endPos); // Cell no. of endPos
-		if ((endcell - startcell) % 11 != 0 || (endcell > startcell))
-		{
-			pOut->PrintMessage("Can't draw the snake!");
-			this_thread::sleep_for(chrono::seconds(1)); // makes a pause for 1 second
-
-		}
-	} while ((endcell - startcell) % 11 != 0 || (endcell > startcell)); // This validation ensures the start cell & end cell are vertically aligned*/
+	
 	// Read the startPos parameter
 	pOut->PrintMessage("New Snake: Click on its Start Cell (top of snake) ...");
 	startPos = pIn->GetCellClicked();
@@ -73,7 +55,7 @@ void AddSnakeAction::Execute()
 		pGrid->PrintErrorMessage("Start Cell can't be smaller than End Cell!");
 		return;
 	}
-	if ((startcell - endcell) % 11 != 0)
+	if ((startcell - endcell) % 11 != 0)// This validation ensures the start cell & end cell are vertically aligned
 	{
 		pGrid->PrintErrorMessage("Start Cell & End Cell must be in the same column!");
 		return;
