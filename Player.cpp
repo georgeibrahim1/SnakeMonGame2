@@ -44,6 +44,11 @@ int Player::GetWallet() const
 	return wallet;
 }
 
+void Player::SetTurnCount(int count)
+{
+	this->turnCount = count;
+}
+
 int Player::GetTurnCount() const
 {
 	return turnCount;
@@ -460,14 +465,7 @@ void Player::Move(Grid * pGrid, int diceNumber)
 		this->SetAnotherRoll(0); // Another roll back to zero
 	}
 
-	if (this->GetToSkip()) // indicating that the player will skip this round
-	{
-		pGrid->PrintErrorMessage("you are denied from playing this turn.Click to continue");
-		--turnCount;
-		this->SetToSkip(0); // player will be able to play normally in the next round
-
-		return;
-	}
+	
 
 	if (burnEffectActive) {
 		wallet -= 20;
@@ -476,6 +474,14 @@ void Player::Move(Grid * pGrid, int diceNumber)
 		if (burnRemainingTurns <= 0) {
 			burnEffectActive = false; 
 		}
+	}
+
+	if (this->GetToSkip()) // indicating that the player will skip this round
+	{
+		pGrid->PrintErrorMessage("you are denied from playing this turn.Click to continue");
+		this->SetToSkip(0); // player will be able to play normally in the next round
+
+		return;
 	}
 
 	if (poisonEffectActive) {

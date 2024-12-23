@@ -32,7 +32,7 @@ void Card6::Apply(Grid* pGrid, Player* pPlayer)
         currentPosition.SetHCell(0); 
     }
     pGrid->UpdatePlayerCell(pPlayer, currentPosition);
-    GameObject* pGameObject = pGrid->GetObj(currentPosition);
+    GameObject* pGameObject = (pPlayer->GetCell())->GetGameObject();
 
     if (pGameObject != nullptr)
     {

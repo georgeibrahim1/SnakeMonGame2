@@ -8,15 +8,7 @@ Ladder::Ladder(const CellPosition & startCellPos, const CellPosition & endCellPo
 	///DONE : Do the needed validation
 	if (endCellPos.IsValidCell())
 	{
-		//if (startCellPos.HCell() == endCellPos.HCell())
-		//{
-			//if (startCellPos.GetCellNum() < endCellPos.GetCellNum())
-				this->endCellPos = endCellPos;
-			///else
-				//return; 
-		//}
-		//else
-			//return;
+				this->endCellPos = endCellPos;	
 	}
 	else
 		return;
