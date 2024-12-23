@@ -33,7 +33,7 @@ void LoadGridAction::ReadActionParameters()
 	Input* pIn = pGrid->GetInput();
 
 	pGrid->PrintErrorMessage("LoadGrid : Click and Type the name of the file....");
-	fileName = pIn->GetSrting(pOut);
+	fileName = pIn->GetSrting(pOut); //name of the file
 }
 
 void LoadGridAction::Execute()
@@ -44,21 +44,21 @@ void LoadGridAction::Execute()
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
 
-	file.open(fileName);
+	file.open(fileName); //open the file
 
 	if (file.is_open()) {
 
-		pGrid->CleanGrid();
+		pGrid->CleanGrid();  //clean the grid before the new grid is uploaded
 		pOut->ClearGridArea();
 
 		int LadderNums, SnakeNums, CardNums;
-		GameObject* pObj = NULL;
+		GameObject* pObj = NULL;    //empty object
 
 		file >> LadderNums;
 
-		for (int i = 0 ; i < LadderNums ; i++)
+		for (int i = 0 ; i < LadderNums ; i++) 
 		{
-			pObj = new Ladder(-1,-1 ); 
+			pObj = new Ladder(-1,-1 );   //Dumb ladder
 			pObj->Load(file);
 			pGrid->AddObjectToCell(pObj); 
 		}
@@ -67,12 +67,12 @@ void LoadGridAction::Execute()
 
 		for (int i = 0; i < SnakeNums; i++)
 		{
-			pObj = new Snake(-1, -1);
+			pObj = new Snake(-1, -1); //Dumb snake
 			pObj->Load(file);
 			pGrid->AddObjectToCell(pObj);
 		}
 
-		CellPosition pos;
+		CellPosition pos;  
 		file >> CardNums;
 		for (int i = 0; i < CardNums; i++) {
 			int num;

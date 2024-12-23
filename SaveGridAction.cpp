@@ -17,7 +17,7 @@ void SaveGridAction::ReadActionParameters()
 	Input* pIn = pGrid->GetInput();
 
 	pGrid->PrintErrorMessage("SaveGrid : Click and Type the name of the file....");
-	fileName = pIn->GetSrting(pOut);
+	fileName = pIn->GetSrting(pOut); //Get the name of the file
 
 }
 
@@ -29,12 +29,12 @@ void SaveGridAction::Execute()
 	Output* pOut = pGrid->GetOutput();
 	Input* pIn = pGrid->GetInput();
 
-	file.open(fileName);
+	file.open(fileName); //open the file
 
 	if (file.is_open()) {
-		file << pGrid->getNumOfObjects(-1) << endl;
-		pGrid->SaveAll(file , -1);
-		file << pGrid->getNumOfObjects(-2) << endl;
+		file << pGrid->getNumOfObjects(-1) << endl; //num of ladders
+		pGrid->SaveAll(file , -1); 
+		file << pGrid->getNumOfObjects(-2) << endl; //num of snakes
 		pGrid->SaveAll(file, -2);
 		file << pGrid->getNumOfObjects(1) << endl; //All Cards not only CardOne , Cause It do this operation in ELSE Scope
 		pGrid->SaveAll(file, 1);
