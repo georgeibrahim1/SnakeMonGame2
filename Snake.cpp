@@ -6,15 +6,7 @@ Snake::Snake(const CellPosition& startCellPos, const CellPosition& endCellPos) :
 	///DONE: Do the needed validation
 	if (endCellPos.IsValidCell())
 	{
-		//if (startCellPos.HCell() == endCellPos.HCell())
-		//{
-			//if (startCellPos.GetCellNum() > endCellPos.GetCellNum())
 				this->endCellPos = endCellPos;
-			//else
-				//return;
-		//}
-		//else
-			//return;
 	}
 	else
 		return;

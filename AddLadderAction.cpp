@@ -93,8 +93,7 @@ void AddLadderAction::Execute()
 		pGrid->PrintErrorMessage("Start Cell & End Cell must be in the same column!");
 		return;
 	}
-	/*GameObject* cardobject = cardobject->GetCopy();
-	Card* Cardobject = dynamic_cast<Card*>(cardobject);*/
+
 	GameObject* isCard = pGrid->GetObj(endPos);
 	Card* HasCard = dynamic_cast<Card*>(isCard);
 	if (pGrid->HasObject(endPos) && !HasCard)

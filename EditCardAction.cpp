@@ -49,8 +49,9 @@ void EditCardAction::Execute()
 		if (cardNumber > 9 && cardNumber < 14)
 		{
 			pGrid->setwasexecuted(cardNumber + 4, false);
-			pCard->ReadCardParameters(pGrid);
 		}
+		pCard->ReadCardParameters(pGrid);
+
 	}
 	else
 		pGrid->PrintErrorMessage("Error: Cell doesn't have a card ! Click to continue ...");
