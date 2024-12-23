@@ -23,8 +23,8 @@ void Card5::Apply(Grid* pGrid, Player* pPlayer)
 
 	Card::Apply(pGrid, pPlayer);
     int lastRoll = pPlayer->getJustRolledDice();
+    pPlayer->SetTurnCount((pPlayer->GetTurnCount()) - 1);
 	pPlayer->Move(pGrid , lastRoll);
-
 }
 
 void Card5::Save(ofstream& OutFile, int Obj)

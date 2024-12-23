@@ -44,6 +44,11 @@ int Player::GetWallet() const
 	return wallet;
 }
 
+void Player::SetTurnCount(int count)
+{
+	this->turnCount = count;
+}
+
 int Player::GetTurnCount() const
 {
 	return turnCount;
